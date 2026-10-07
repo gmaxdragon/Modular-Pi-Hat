@@ -30,9 +30,9 @@ The header should also expose power and ground separately from the 16 signal cou
 ## USB
 
 Target:
-- **7 downstream external USB 2.0 ports**
+- **8 downstream external USB 2.0 ports**
 - **4 × USB-A**
-- **3 × USB-C**
+- **4 × USB-C**
 - **1 upstream hub connection to Raspberry Pi**
 - powered-hub architecture
 
@@ -77,3 +77,11 @@ Include:
 - power LED
 - status LED
 - clearly labeled test points
+
+
+## Grade 4 choices locked
+
+- Servo connectors: standard 3-pin servo headers, individually labeled.
+- GPIO: four groups of four signal pins, every GPIO individually labeled.
+- Power input: screw terminal.
+- USB physical target: four USB-A plus four USB-C external ports.
