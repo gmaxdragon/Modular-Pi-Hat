@@ -30,14 +30,26 @@ The header should also expose power and ground separately from the 16 signal cou
 ## USB
 
 Target:
-- 4 downstream external USB ports
-- 2 × USB-A
-- 2 × USB-C
-- 1 upstream connection to Raspberry Pi
+- **7 downstream external USB 2.0 ports**
+- **4 × USB-A**
+- **3 × USB-C**
+- **1 upstream hub connection to Raspberry Pi**
+- powered-hub architecture
 
-USB 2.0 high-speed is enough for the first board.
+The hub section should not depend entirely on the Raspberry Pi's USB power budget.
 
-A powered hub architecture is preferred so high-current peripherals do not depend entirely on the Pi's USB power budget.
+USB design requirements to learn and verify:
+- dedicated 7-port hub controller
+- 24 MHz/reference-clock requirements if required by the chosen controller
+- upstream and downstream USB 2.0 D+/D- differential pairs
+- ESD protection at external connectors
+- USB-A VBUS switching/current limiting
+- USB-C CC1/CC2 source configuration for downstream-facing USB-C ports
+- no accidental VBUS back-power path into the Raspberry Pi
+- adequate 5 V current budget for all seven ports
+- connector shell grounding strategy
+
+Do not pick the final hub IC or power switches until the datasheets are read.
 
 ## Raspberry Pi interface
 
