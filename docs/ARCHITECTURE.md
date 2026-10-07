@@ -48,15 +48,15 @@ This avoids consuming one downstream USB hub port just to talk to the ESP32.
 
 New target:
 - 1 upstream USB connection from the Raspberry Pi into the board's hub
-- **7 external downstream USB 2.0 ports**
+- **8 external downstream USB 2.0 ports**
 - **4 × USB-A**
-- **3 × USB-C**
+- **4 × USB-C**
 - externally powered hub section
 - per-port protection/current limiting where practical
 
-A realistic controller for this target is a dedicated 7-port USB 2.0 hub IC such as the Microchip USB2517 family. The exact part is not locked until the builder checks package, availability, cost, power-control requirements, and routing difficulty.
+Eight external ports changes the hub problem: a single 7-port controller is no longer enough. The builder must compare realistic 8-port topologies before schematic capture, such as multiple USB 2.0 hub controllers or another supported multi-port architecture. Do not guess the topology.
 
-The USB hub is separate from the ESP32-S3. The ESP32 is the robotics controller; the hub expands the Raspberry Pi's USB connectivity.
+The USB hub section is separate from the ESP32-S3. The ESP32 is the robotics controller; the hub expands the Raspberry Pi's USB connectivity.
 
 USB-C downstream ports require correct USB-C CC configuration in addition to D+/D-, VBUS, ground, and ESD protection.
 
