@@ -9,10 +9,12 @@ Goal: understand what the board needs before drawing wires.
 Do:
 1. Write down the six servo channels.
 2. Write down the sixteen GPIO requirement.
-3. Pick the physical USB mix: 2 USB-A + 2 USB-C.
-4. Decide that the Pi remains the main computer.
-5. Decide that the ESP32-S3 handles real-time hardware.
-6. Decide that servos use external power.
+3. Lock the USB target: **7 downstream ports = 4 USB-A + 3 USB-C**.
+4. Add **1 upstream USB link** from the Raspberry Pi to the hub.
+5. Decide that the Pi remains the main computer.
+6. Decide that the ESP32-S3 handles real-time hardware.
+7. Decide that servos use external power.
+8. Decide that the USB hub also uses the external power system rather than relying only on Pi USB power.
 
 Pass condition:
 You can explain every major block in one sentence.
@@ -25,9 +27,11 @@ Draw boxes only:
 - ESP32-S3
 - servo outputs ×6
 - GPIO ×16
-- USB hub
-- USB-A ×2
-- USB-C ×2
+- 7-port USB hub controller
+- USB-A ×4
+- USB-C ×3
+- upstream Pi USB connection ×1
+- USB port-power/current-protection block
 - wall-power input
 - buck converter
 - 3.3 V regulator
