@@ -2,6 +2,8 @@
 
 **Scope:** main Raspberry Pi HAT and separate passive servo extender. Their populated components were reconciled against the KiCad PCB and schematic files in this repository. Both boards are untested prototypes; the zero-warning KiCad DRC reported by the designer is not an electrical/thermal safety certification.
 
+**October 11 update:** The complete [bom.csv](../bom.csv) contains 28 estimate lines, **$44.98** for 26 DigiKey product lines (including the exact N8R8 ESP32) plus two provisional PCB fabrication lines. The archived cart-import files below remain valid only for the **25-product cart without ESP32**. Add **one ESP32-S3-WROOM-1-N8R8** manually to those carts; online unit price snapshot **$6.32**, DigiKey [part listing](https://www.digikey.com/en/products/detail/espressif-systems/ESP32-S3-WROOM-1-N8R8/15295891). The user's previously reported **$36.78** cart figure is not independently verified and does not match the complete engineering estimate.
+
 ## Exact cart files (do not duplicate six existing items)
 
 **Existing DigiKey cart with six accepted products:** upload [19 missing line items](Seizo_DigiKey_ADD_ONLY_19_missing_DigiKey_OLED.csv), or paste the [19-line headerless Bulk Add list](Seizo_DigiKey_BULK_ADD_MISSING_19.txt). These lists deliberately **do not** add another 2A fuse, the two 4-way terminal blocks, the 2-way terminal, the OLED female socket, or the two radial capacitors already in the cart.
@@ -16,14 +18,16 @@ CSV files are for DigiKey's **Upload a List** flow; check column mapping for `Pa
 | --- | ---: |
 | Six existing DigiKey items, exactly as shown in screenshot | $8.80 |
 | Remaining 19 DigiKey items, estimated displayed unit prices | $25.86 |
-| **Estimated 25-line DigiKey parts subtotal** | **$34.66** |
+| **Estimated original 25-line DigiKey parts subtotal (without ESP32)** | **$34.66** |
+| Additional ESP32-S3-WROOM-1-N8R8, current quote to verify in cart | $6.32 |
+| **Estimated 26-line DigiKey parts subtotal** | **$40.98** |
 | Main HAT board fabrication, *provisional* | $2.00 |
 | Servo extender fabrication, *provisional* | $2.00 |
-| **Estimated components + two bare PCB fabrication orders** | **$38.66** |
+| **Estimated components + two bare PCB fabrication orders including ESP32** | **$44.98** |
 | **Half Life Tier 2 budget** | **$65.00** |
-| Nominal available **before** shipping, tax, tariffs, servo wiring, and future ESP32 | **$26.34** |
+| Nominal available **before** shipping, tax, tariffs, and servo wiring | **$20.02** |
 
-Your previous **$36.78** draft is superseded. It counted a backordered ESP32 and a cheaper OLED plan; the current estimate has no ESP32 but includes the DFRobot OLED module, Samtec socket, and correctly pinned jumper cables. The first, incomplete cart showed **$8.49 estimated shipping** and **$2.74 estimated tariffs** on just six accepted items, for $20.03. Freight, tariff and tax for the completed cart, plus PCB fabrication shipping, are **not yet quoted**. Do not treat $38.66 as the all-in checkout cost.
+Your **$36.78** cart total must be verified against a real current screenshot. The **$44.98** full engineering estimate includes the actual N8R8 ESP32, DFRobot OLED module, Samtec socket, correctly pinned jumper cables and two separate provisional bare-PCB fabrication amounts. The first partial cart displayed **$8.49 shipping** and **$2.74 tariffs** with just six accepted items. Freight, tariffs and tax for the full cart plus PCB fabrication shipping have not been quoted. Do not treat $44.98 as an all-in checkout cost.
 
 ## Fuse and connector: selected separately
 
@@ -45,11 +49,11 @@ Solder four male header pins to the OLED from the purchased breakaway header pac
 
 ## Excluded, future or already owned hardware
 
-- **ESP32-S3-WROOM-1-N8R8** (8 MB flash / 8 MB PSRAM) is **deferred due to backorder and not in the purchase subtotal**, as requested. It **remains on the PCB and schematic**, and the complete HAT cannot operate without installing it. Do not substitute N8 (without PSRAM) casually.
+- **ESP32-S3-WROOM-1-N8R8** (8 MB flash / 8 MB PSRAM) **is included in the updated complete BOM at a $6.32 USD web quote** but is still missing from the 25-line historical cart imports. The complete HAT cannot operate without it. Add this exact module to your shopping cart and verify stock; do not substitute the non-PSRAM N8 model.
 - Schematic-only EEPROM options **C1, R1, R2, U1 and JP1** are intentionally excluded from this populated board and purchase list. Extender **C1**, however, is a **real** 100uF capacitor already in the cart.
 - A 4-conductor main-to-extender cable (**servo supply, ground, wrist signal and gripper signal**) is necessary unless already owned. Its route, length, conductor gauge and cost have not been specified; **not priced** in the $38.66.
 - Raspberry Pi 4, fan, servos, their external regulated power supply, mounting bolts/spacers, any other motor drivers and physical wiring are pre-existing or not confirmed as new purchases. Verify compatibility and existing inventory, not silently assign them a $0 purchase cost.
-- Each board has a separate JLCPCB order. $2 bare-board figures are estimates, **not quotes**. Gerber/drill exports are optional for the Half Life design submission, and not uploaded as manufacturing-approved artifacts.
+- Each board has a separate JLCPCB order. $2 bare-board figures are estimates, **not quotes**. KiCad 10 Gerber/drill ZIPs now exist for [main](../fabrication/main/Seizo_Main_HAT_Gerbers.zip) and [extender](../fabrication/servo-extender/Seizo_Servo_Extender_Gerbers.zip), but they are **not** manufacturer-approved or hardware-safety-tested.
 
 ## To finish the Half Life cart evidence
 
