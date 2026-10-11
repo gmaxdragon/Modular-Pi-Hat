@@ -1,0 +1,4 @@
+(fp_lib_table
+	(version 7)
+	(lib (name "Seizo_Reviewed") (type "KiCad") (uri "${KIPRJMOD}/Seizo_Reviewed.pretty") (options "") (descr ""))
+)
