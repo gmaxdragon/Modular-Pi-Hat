@@ -2,7 +2,17 @@
 
 A modular Raspberry Pi 4 controller board for **Seizo**, an AI robotic arm, with a separate passive wrist/gripper servo extender.
 
-**Status: work in progress. These boards are not yet manufacturing-released or hardware-tested.** The miniature extender has been routed in KiCad; the main controller is still being reviewed and laid out. A clean design-check count is not a current-capacity, polarity, or mechanical-fit certification.
+**Status: both KiCad designs are routed and saved in their original CAD formats for Half Life design-stage submission. Neither board is manufacturing-released or hardware-tested.** A clean design-check count is not a current-capacity, polarity, or mechanical-fit certification.
+
+## KiCad source files (required for Half Life submission)
+
+**Main Pi HAT:** [PCB](hardware/main/test1.kicad_pcb) · [Schematic](hardware/main/test1.kicad_sch) · [Project settings](hardware/main/test1.kicad_pro).
+
+**Passive servo extender:** [PCB](hardware/servo-extender/SZSERVOEXTENDER.kicad_pcb) · [Schematic](hardware/servo-extender/SZSERVOEXTENDER.kicad_sch) · [Project settings](hardware/servo-extender/SZSERVOEXTENDER.kicad_pro).
+
+The main project includes its [custom KiCad footprint library](hardware/main/Seizo_Reviewed.pretty) and [project-local fp-lib-table](hardware/main/fp-lib-table). These are required for opening and verifying the submitted board in KiCad 10.
+
+These are **design files, not a certified manufacturing release**. The custom USB footprint, regulator load and thermal margin, external servo supply/fuse, and stacked mechanical clearances require real-world verification before fabrication or powered operation. Gerber/drill outputs are not included because they are optional for the Half Life design submission and have not passed a final manufacturing release check.
 
 ## Project images
 
@@ -35,31 +45,28 @@ Servo power is not supplied by the ESP32 3.3V regulator. No powered motor testin
 
 ## Bill of materials and budget
 
-The sourced **draft purchasing list is [bom.csv](bom.csv)**. It covers one assembled main controller and one assembled extender, not five fully populated copies. It includes two matching four-position terminals, one for each board. Quantity 1 for the breakaway headers means one pack, not one individual pin.
+The updated [bom.csv](bom.csv) includes **27 indicative purchasing lines** for the main HAT and the passive servo extender. It matches the populated schematic references: ESP32-S3-WROOM-1-N8R8 with 8 MB flash and 8 MB PSRAM, 75k R10, 4.7k R14/R15, 0.91-inch OLED, fuse holder, and estimated bare-board fabrication. The excluded bottom-left EEPROM circuit is not budgeted as installed hardware.
 
-**Listed electronic-parts subtotal: USD 25.79.** Prices were researched on October 8, 2026, US Pacific time. Vendor URLs and exact candidate part numbers are included in every row. Listings, stock, tariffs, shipping, and checkout prices can change. This is not a placed order or a fabrication-ready production BOM. Use cut-tape or bulk ordering, not paid Digi-Reel service or a full reel.
+**Draft parts-plus-two-PCB subtotal: $36.78 USD** (not a final supplier quote). Prices and part substitutes must be checked against the final assembly. The 2A fuse row is explicitly an **unapproved price placeholder**, not a selected protective device. Shipping, cables/wire, tax and any new electrical protection are not priced.
 
-| Budget item | USD | Basis |
-| --- | ---: | --- |
-| Sourced electronic-parts lines in `bom.csv` | 25.79 | Listed unit prices multiplied by quantities |
-| Bare PCB fabrication for both designs | 6.00 | Allowance only; no Gerber quote yet |
-| Fuse/protection, four-conductor cable, and mounting/strain-relief hardware | 10.00 | Allowance only; exact selections pending |
-| Combined component and PCB shipping | 15.00 | Allowance only; checkout not verified |
-| Tax and possible tariff allowance | 6.00 | Allowance only; checkout not verified |
-| Remaining contingency | 2.21 | Unallocated |
-| **User's total spending target** | **65.00** | **Budget allocation, not a supplier quote** |
+| Allocation | USD |
+| --- | ---: |
+| Draft populated components and two bare-board fabrication estimates | $36.78 |
+| Protected contingency | $10.00 |
+| Remaining for shipping, tax, wiring, and hardware revisions | $53.22 |
+| **Current Tier 3 funding ceiling** | **$100.00** |
 
-The platform displays a USD 100 Tier 3 funding ceiling. The project spending target remains USD 65. Existing Raspberry Pi, robot, servos, cameras, fan, and controller hardware are not being bought again. Tools are excluded. An adequate existing regulated servo supply is assumed for budgeting but its specification must be confirmed; a new supply, assembly service, or added protection circuitry could change the total.
+The automatically generated BOM.md and JOURNAL.md belong to Half Life and must not be edited directly. Once this repository syncs, use the Half Life project’s **Import from repo** control to update its online parts form from bom.csv, then review every price and quantity.
 
 ### Purchasing holds
 
-- Reconcile quantities and footprints against the latest saved native KiCad designs. The available main schematic snapshot predates later edits; the finished extender's native design has not yet been added to this repository.
+- Reconcile quantities and footprints against the latest saved native KiCad designs. Both native source projects are now included above. Reconcile the final purchased parts against the exact PCB footprints before ordering.
 - Select the fuse from the actual servo current, supply, wiring, and protection requirements. The schematic's generic `Fuse` entry has no validated rating yet. Confirm cable length before choosing its wire gauge and buying it.
 - Check the exact USB-C receptacle, both terminal types, capacitor lead dimensions, switches, LED polarity, and stacking header against their PCB footprints. The capacitor used for costing the extender has a 0.248-inch body diameter and 0.098-inch lead pitch; final lead-hole fit must still be verified.
 - Verify the 3.3V regulator's current and thermal margins, ESP32 antenna clearance, USB layout, and existing-HAT electrical compatibility. The AP2112's nominal current rating is not a thermal sign-off.
 - Get actual fabrication, shipping, tax, and tariff totals before importing a final funding request or ordering.
 
-`BOM.md` and `JOURNAL.md` are generated by Half Life and intentionally remain untouched. Editing them here does not update the platform and can be overwritten during sync. The platform's **Import from repo** control can be used to attempt importing `bom.csv`; the importer schema and resulting quantities/prices must be checked. Do not submit the USD 25.79 electronic subtotal as the complete project cost.
+`BOM.md` and `JOURNAL.md` are generated by Half Life and intentionally remain untouched. Editing them here does not update the platform and can be overwritten during sync. The platform's **Import from repo** control can be used to attempt importing `bom.csv`; the importer schema and resulting quantities/prices must be checked. Do not submit the USD 36.78 electronic subtotal as the complete project cost.
 
 ## Firmware
 
