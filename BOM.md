@@ -8,7 +8,7 @@
 
 | Week | Tier | Parts funding |
 | --- | --- | --- |
-| Week 1 | Tier 3 | $100.00 |
+| Week 1 | Tier 2 | $65.00 |
 
 | Part | What it's for | Qty | Unit | Total | Vendor |
 | --- | --- | --- | --- | --- | --- |
@@ -34,13 +34,12 @@
 | [75k ohm 1 percent 0805 resistor](https://www.digikey.com/en/products/detail/yageo/RC0805FR-0775KL/731080) | R10, upper USB VBUS sense divider resistor. | 1 | $0.10 | $0.10 | [DigiKey](https://www.digikey.com/en/products/detail/yageo/RC0805FR-0775KL/731080) |
 | [4.7k ohm 1 percent 0805 resistors](https://www.digikey.com/en/products/detail/yageo/RC0805FR-074K7L/727929) | R14 and R15, OLED I2C pullups. | 2 | $0.10 | $0.20 | [DigiKey](https://www.digikey.com/en/products/detail/yageo/RC0805FR-074K7L/727929) |
 | [Mini blade fuse holder](https://www.digikey.com/en/products/detail/keystone-electronics/3568/2137306) | F1 holder; fuse purchased separately. | 1 | $1.31 | $1.31 | [DigiKey](https://www.digikey.com/en/products/detail/keystone-electronics/3568/2137306) |
-| [Mini blade fuse, 2A price placeholder NOT approved for use](https://www.digikey.com/en/products/detail/littelfuse-inc/0297002-WXNV/124900) | Not a selected safety component; choose fuse based on actual servo load, supply and cable rating. | 1 | $0.39 | $0.39 | [DigiKey](https://www.digikey.com/en/products/detail/littelfuse-inc/0297002-WXNV/124900) |
 | [0.91 inch 128x32 4-pin I2C OLED module](https://www.icstation.com/inch-128x32-serial-blue-oled-display-module-12832-arduino-p-9934.html) | J10, GND VCC SCL SDA; physical clearance/mating unverified. | 1 | $4.89 | $4.89 | [ICStation](https://www.icstation.com/inch-128x32-serial-blue-oled-display-module-12832-arduino-p-9934.html) |
 | [4-position 2.54mm female OLED socket](https://www.digikey.com/en/products/detail/adam-tech/SMC-1-04-1-GT/9830800) | Match J10 socket to actual OLED pins. | 1 | $0.58 | $0.58 | [DigiKey](https://www.digikey.com/en/products/detail/adam-tech/SMC-1-04-1-GT/9830800) |
 | [Main HAT PCB fabrication, five bare boards (indicative)](https://jlcpcb.com/) | PCB is a project part; Gerber-based quote, color, freight and tax pending. | 1 | $2.00 | $2.00 | [JLCPCB](https://jlcpcb.com/) |
 | [Servo-extender PCB fabrication, five bare boards (indicative)](https://jlcpcb.com/) | Second PCB fabrication order; freight and tax pending. | 1 | $2.00 | $2.00 | [JLCPCB](https://jlcpcb.com/) |
-| **Parts subtotal** | — | — | — | **$36.78** | — |
+| **Parts subtotal** | — | — | — | **$36.39** | — |
 | **Tax & shipping** | — | — | — | **$0.00** | — |
-| **Total** | — | — | — | **$36.78** | — |
+| **Total** | — | — | — | **$36.39** | — |
 
-$63.22 left of the tier's funding.
+$28.61 left of the tier's funding.
