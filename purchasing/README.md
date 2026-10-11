@@ -15,15 +15,15 @@ CSV files are for DigiKey's **Upload a List** flow; check column mapping for `Pa
 | Item | USD |
 | --- | ---: |
 | Six existing DigiKey items, exactly as shown in screenshot | $8.80 |
-| Remaining 19 DigiKey items, estimated displayed unit prices | $25.95 |
-| **Estimated 25-line DigiKey parts subtotal** | **$34.75** |
+| Remaining 19 DigiKey items, estimated displayed unit prices | $25.86 |
+| **Estimated 25-line DigiKey parts subtotal** | **$34.66** |
 | Main HAT board fabrication, *provisional* | $2.00 |
 | Servo extender fabrication, *provisional* | $2.00 |
-| **Estimated components + two bare PCB fabrication orders** | **$38.75** |
+| **Estimated components + two bare PCB fabrication orders** | **$38.66** |
 | **Half Life Tier 2 budget** | **$65.00** |
-| Nominal available **before** shipping, tax, tariffs, servo wiring, and future ESP32 | **$26.25** |
+| Nominal available **before** shipping, tax, tariffs, servo wiring, and future ESP32 | **$26.34** |
 
-Your previous **$36.78** draft is superseded. It counted a backordered ESP32 and a cheaper OLED plan; the current estimate has no ESP32 but includes the DFRobot OLED module, Samtec socket, and correctly pinned jumper cables. The first, incomplete cart showed **$8.49 estimated shipping** and **$2.74 estimated tariffs** on just six accepted items, for $20.03. Freight, tariff and tax for the completed cart, plus PCB fabrication shipping, are **not yet quoted**. Do not treat $38.75 as the all-in checkout cost.
+Your previous **$36.78** draft is superseded. It counted a backordered ESP32 and a cheaper OLED plan; the current estimate has no ESP32 but includes the DFRobot OLED module, Samtec socket, and correctly pinned jumper cables. The first, incomplete cart showed **$8.49 estimated shipping** and **$2.74 estimated tariffs** on just six accepted items, for $20.03. Freight, tariff and tax for the completed cart, plus PCB fabrication shipping, are **not yet quoted**. Do not treat $38.66 as the all-in checkout cost.
 
 ## Fuse and connector: selected separately
 
@@ -47,7 +47,7 @@ Solder four male header pins to the OLED from the purchased breakaway header pac
 
 - **ESP32-S3-WROOM-1-N8R8** (8 MB flash / 8 MB PSRAM) is **deferred due to backorder and not in the purchase subtotal**, as requested. It **remains on the PCB and schematic**, and the complete HAT cannot operate without installing it. Do not substitute N8 (without PSRAM) casually.
 - Schematic-only EEPROM options **C1, R1, R2, U1 and JP1** are intentionally excluded from this populated board and purchase list. Extender **C1**, however, is a **real** 100uF capacitor already in the cart.
-- A 4-conductor main-to-extender cable (**servo supply, ground, wrist signal and gripper signal**) is necessary unless already owned. Its route, length, conductor gauge and cost have not been specified; **not priced** in the $38.75.
+- A 4-conductor main-to-extender cable (**servo supply, ground, wrist signal and gripper signal**) is necessary unless already owned. Its route, length, conductor gauge and cost have not been specified; **not priced** in the $38.66.
 - Raspberry Pi 4, fan, servos, their external regulated power supply, mounting bolts/spacers, any other motor drivers and physical wiring are pre-existing or not confirmed as new purchases. Verify compatibility and existing inventory, not silently assign them a $0 purchase cost.
 - Each board has a separate JLCPCB order. $2 bare-board figures are estimates, **not quotes**. Gerber/drill exports are optional for the Half Life design submission, and not uploaded as manufacturing-approved artifacts.
 
