@@ -45,29 +45,29 @@ Servo power is not supplied by the ESP32 3.3V regulator. No powered motor testin
 
 ## Bill of materials and Tier 2 funding
 
-The [Tier 2 purchasing BOM](bom.csv) covers both populated boards, their connectors, the **Littelfuse MINI 297 2A 32V fuse** (DigiKey F986-ND), the matching Keystone 3568 holder (36-3568-ND), a separately sourced OLED module, and two **provisional** bare-PCB fabrication estimates. It uses the actual 75k R10, 4.7k R14/R15, and four-pin Samtec SSW-104-01-G-S OLED socket selected in the cart.
+The [Tier 2 purchasing BOM](bom.csv) covers both populated boards, their connectors, the **Littelfuse MINI 297 2A 32V fuse** (DigiKey F986-ND), the matching Keystone 3568 holder (36-3568-ND), a DigiKey OLED module and its pin-order adapter jumper leads, and two **provisional** bare-PCB fabrication estimates. It uses the actual 75k R10, 4.7k R14/R15, and four-pin Samtec SSW-104-01-G-S OLED socket selected in the cart.
 
 **ESP32-S3-WROOM-1-N8R8 is deliberately deferred from this purchasing BOM because of backorder.** It is physically required by the unmodified KiCad design and must be obtained separately before powering/testing the completed HAT. Do not substitute ESP32-S3-WROOM-1-N8, which lacks the specified PSRAM, without a real design review. The bottom-left EEPROM components C1, JP1, R1, R2, U1 are intentionally excluded from board assembly and purchasing.
 
 | Tier 2 budget | USD |
 | --- | ---: |
-| Indicative components, OLED and **two** PCB fabrication estimates, excluding ESP32 | $30.99 |
+| Indicative components, OLED and **two** PCB fabrication estimates, excluding ESP32 | $38.75 |
 | Tier 2 funding ceiling | $65.00 |
-| Nominal remaining **before** shipping, tariffs, tax and unpriced wiring | $34.01 |
+| Nominal remaining **before** shipping, tariffs, tax and unpriced wiring | $26.25 |
 
-The old **$36.78** estimate included a $6.32 ESP32 that has now been removed and used a $0.58 OLED socket instead of the $1.11 actual Samtec cart item. Neither amount is an actual confirmed landed cost.
+The earlier **$36.78** draft included the $6.32 backordered ESP32, which is excluded from the present order. This revised **$38.75** estimate instead includes the $9.90 DFRobot DFR0648 OLED, its $2.75 jumper-wire adapter pack, the $1.11 Samtec socket already in the cart, and two provisional $2 PCB-fabrication estimates. The final landed cost remains unknown.
 
 ### DigiKey cart and downloadable upload files
 
-- [Add only missing 17 items](purchasing/Seizo_DigiKey_ADD_ONLY_17_missing.csv): use with the user's existing six-item cart; does **not** add the 2A fuse again.
-- [All 23 DigiKey purchase lines](purchasing/Seizo_DigiKey_FULL_CART_23_lines.csv): import **only into an empty cart**.
+- [Add only missing 19 items](purchasing/Seizo_DigiKey_ADD_ONLY_19_missing_DigiKey_OLED.csv): use with the user's existing six-item cart; does **not** add the 2A fuse again.
+- [All 25 DigiKey purchase lines](purchasing/Seizo_DigiKey_FULL_CART_25_lines_DigiKey_OLED.csv): import **only into an empty cart**.
 - [Cart correction and unresolved external materials](purchasing/README.md).
 
 DigiKey's six accepted lines totaled **$8.80** for components, with **$8.49** estimated shipping and **$2.74** estimated tariffs, or **$20.03**, **before** adding the missing components. The 17 failed import entries largely used full-reel rather than cut-tape SKUs and ambiguous vendor part numbers, not real board defects.
 
 The fuse and holder are the same MINI 297 physical family, but the **2A rating is not a verified servo-protection design**. Confirm servo stall currents, external supply current limit, operating voltage and interconnect-wire ampacity **before powering motors**. The 3.3V regulator thermal budget, USB connector land pattern, stacking mechanical fit, and exact board fabrication quote remain open.
 
-The genuine cart screenshot should show **all requested DigiKey items and the updated landed total**. The OLED supplier, PCB manufacturing, cable and existing motors/supply are **not automatically included** in DigiKey's cart. A four-conductor cable between J11 and the extender's J1 is required unless already owned. Prices cannot be guaranteed until checkout.
+**DO NOT plug the DFRobot DFR0648 OLED directly into Seizo J10.** The module's physical pin order differs from J10. Use four individual male-to-female jumpers: J10 GND to OLED GND, 3V3 to VCC, SCL to SCL, SDA to SDA. The genuine cart screenshot should show **all 25 requested DigiKey product lines and the updated landed total**. The OLED module and its jumper-wire adapter are included in the corrected DigiKey import. PCB fabrication, the four-conductor servo interconnect, the deferred ESP32, and existing motors/power supplies are **not included** in the current DigiKey cart. A four-conductor cable between J11 and the extender's J1 is required unless already owned. Prices cannot be guaranteed until checkout.
 
 `BOM.md` and `JOURNAL.md` are auto-generated by Half Life and deliberately not edited. Use Half Life's **Import from repo** function after syncing this new `bom.csv` if it supports this format; verify each displayed quantity and total.
 
