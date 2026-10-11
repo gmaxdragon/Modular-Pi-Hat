@@ -12,7 +12,7 @@ A modular Raspberry Pi 4 controller board for **Seizo**, an AI robotic arm, with
 
 The main project includes its [custom KiCad footprint library](hardware/main/Seizo_Reviewed.pretty) and [project-local fp-lib-table](hardware/main/fp-lib-table). These are required for opening and verifying the submitted board in KiCad 10.
 
-These are **design files, not a certified manufacturing release**. The custom USB footprint, regulator load and thermal margin, external servo supply/fuse, and stacked mechanical clearances require real-world verification before fabrication or powered operation. Gerber/drill outputs are not included because they are optional for the Half Life design submission and have not passed a final manufacturing release check.
+These are **design files, not a certified manufacturing release**. The custom USB footprint, regulator load and thermal margin, external servo supply/fuse, and stacked mechanical clearances require real-world verification before fabrication or powered operation. The [main HAT Gerber/drill ZIP](fabrication/main/Seizo_Main_HAT_Gerbers.zip) and [servo extender Gerber/drill ZIP](fabrication/servo-extender/Seizo_Servo_Extender_Gerbers.zip) have now been exported from the unchanged boards using KiCad 10. These are prototype fabrication outputs, not an approved electrical or manufacturing release.
 
 ## Project images
 
@@ -47,15 +47,15 @@ Servo power is not supplied by the ESP32 3.3V regulator. No powered motor testin
 
 The [Tier 2 purchasing BOM](bom.csv) covers both populated boards, their connectors, the **Littelfuse MINI 297 2A 32V fuse** (DigiKey F986-ND), the matching Keystone 3568 holder (36-3568-ND), a DigiKey OLED module and its pin-order adapter jumper leads, and two **provisional** bare-PCB fabrication estimates. It uses the actual 75k R10, 4.7k R14/R15, and four-pin Samtec SSW-104-01-G-S OLED socket selected in the cart.
 
-**ESP32-S3-WROOM-1-N8R8 is deliberately deferred from this purchasing BOM because of backorder.** It is physically required by the unmodified KiCad design and must be obtained separately before powering/testing the completed HAT. Do not substitute ESP32-S3-WROOM-1-N8, which lacks the specified PSRAM, without a real design review. The bottom-left EEPROM components C1, JP1, R1, R2, U1 are intentionally excluded from board assembly and purchasing.
+**ESP32-S3-WROOM-1-N8R8 is now listed in the full purchasing CSV at a web-snapshot unit price of $6.32.** It is physically required by the unmodified KiCad design. Confirm current stock and purchase it before powering/testing the HAT. Do not substitute ESP32-S3-WROOM-1-N8, which lacks the specified PSRAM, without a real design review. The bottom-left EEPROM components C1, JP1, R1, R2, U1 are intentionally excluded from board assembly and purchasing.
 
 | Tier 2 budget | USD |
 | --- | ---: |
-| Indicative components, OLED and **two** PCB fabrication estimates, excluding ESP32 | $38.66 |
+| Full estimated components including exact N8R8 ESP32, OLED and **two** PCB fabrication estimates | $44.98 |
 | Tier 2 funding ceiling | $65.00 |
 | Nominal remaining **before** shipping, tariffs, tax and unpriced wiring | $26.34 |
 
-The earlier **$36.78** draft included the $6.32 backordered ESP32, which is excluded from the present order. This revised **$38.66** estimate instead includes the $9.90 DFRobot DFR0648 OLED, its $2.75 jumper-wire adapter pack, the $1.11 Samtec socket already in the cart, and two provisional $2 PCB-fabrication estimates. The final landed cost remains unknown.
+The previously reported **$36.78** shopping-cart figure has not been reconciled against a full cart screenshot. The full **$44.98** parts-plus-provisional-PCB estimate now includes the required $6.32 N8R8 ESP32, $9.90 DFRobot DFR0648 OLED, $2.75 jumper-wire adapter, $1.11 Samtec socket and two provisional $2 PCB-fabrication estimates. Shipping, tariffs, tax and unknown wiring costs are additional.
 
 ### DigiKey cart and downloadable upload files
 
@@ -67,7 +67,7 @@ DigiKey's six accepted lines totaled **$8.80** for components, with **$8.49** es
 
 The fuse and holder are the same MINI 297 physical family, but the **2A rating is not a verified servo-protection design**. Confirm servo stall currents, external supply current limit, operating voltage and interconnect-wire ampacity **before powering motors**. The 3.3V regulator thermal budget, USB connector land pattern, stacking mechanical fit, and exact board fabrication quote remain open.
 
-**DO NOT plug the DFRobot DFR0648 OLED directly into Seizo J10.** The module's physical pin order differs from J10. Use four individual male-to-female jumpers: J10 GND to OLED GND, 3V3 to VCC, SCL to SCL, SDA to SDA. The genuine cart screenshot should show **all 25 requested DigiKey product lines and the updated landed total**. The OLED module and its jumper-wire adapter are included in the corrected DigiKey import. PCB fabrication, the four-conductor servo interconnect, the deferred ESP32, and existing motors/power supplies are **not included** in the current DigiKey cart. A four-conductor cable between J11 and the extender's J1 is required unless already owned. Prices cannot be guaranteed until checkout.
+**DO NOT plug the DFRobot DFR0648 OLED directly into Seizo J10.** The module's physical pin order differs from J10. Use four individual male-to-female jumpers: J10 GND to OLED GND, 3V3 to VCC, SCL to SCL, SDA to SDA. The genuine cart screenshot should show **all 26 estimated DigiKey product lines including the ESP32, if purchasing the whole system, and the actual landed total**. The OLED module and its jumper-wire adapter are included in the corrected DigiKey import. PCB fabrication, the four-conductor servo interconnect, and existing motors/power supplies are **not included** in the prior 25-item non-ESP32 DigiKey cart. The current CSV does include the ESP32 as a needed purchase. A four-conductor cable between J11 and the extender's J1 is required unless already owned. Prices cannot be guaranteed until checkout.
 
 `BOM.md` and `JOURNAL.md` are auto-generated by Half Life and deliberately not edited. Use Half Life's **Import from repo** function after syncing this new `bom.csv` if it supports this format; verify each displayed quantity and total.
 
@@ -79,13 +79,13 @@ The fuse and holder are the same MINI 297 physical family, but the **2A rating i
 
 **Validation: not compiled for the ESP32 target and not tested on hardware yet.** Keep external servo and stepper supplies disconnected during initial bring-up. Review the firmware and build configuration before flashing.
 
-The KiCad design uses ESP32-S3-WROOM-1-N8R8 with 8 MB flash and 8 MB PSRAM, but this backordered component is not being purchased now. Firmware target, flash configuration, PSRAM settings, USB CDC and bootloader must be validated for the eventual installed module before flashing. The diagnostic source rejects a non-S3 target or disabled USB CDC. Follow [Espressif's native USB setup instructions](https://docs.espressif.com/projects/arduino-esp32/en/latest/tutorials/cdc_dfu_flash.html). No flashing or powered test has been performed as part of this repository update.
+The KiCad design uses ESP32-S3-WROOM-1-N8R8 with 8 MB flash and 8 MB PSRAM. This part is included in the complete CSV estimate and must be in the updated cart or sourced separately. Firmware target, flash configuration, PSRAM settings, USB CDC and bootloader must be validated for the eventual installed module before flashing. The diagnostic source rejects a non-S3 target or disabled USB CDC. Follow [Espressif's native USB setup instructions](https://docs.espressif.com/projects/arduino-esp32/en/latest/tutorials/cdc_dfu_flash.html). No flashing or powered test has been performed as part of this repository update.
 
 ## Latest design-stage checks and remaining hardware validation
 
 Both real KiCad source projects, including the 37 custom main-board footprints and project-local `fp-lib-table`, are already present in this GitHub repository. The project's own PCB DRC was reported as **zero errors and zero warnings** on October 11, 2026. The submitted ERC warning descriptions relate mainly to labeled unused Raspberry Pi GPIOs and two intentionally excluded EEPROM symbols. The repository does not claim an independent native DRC run after the latest modification or physical prototype testing.
 
-Half Life's mandatory **PCB design files** checker can now be rerun. Gerber/drill files remain optional for the design-stage application and have not been approved for hardware manufacture. Review the 3.3V regulator temperature/load, servo fuse and wiring, custom USB footprint and D+/D- layout, and all connector/capacitor clearances before placing a manufacturing order or powering motors. Upload a genuine cart screenshot once the cart includes all needed parts; keep its actual order cost separate from the provisional BOM subtotal.
+Half Life's mandatory **PCB design files** checker can now be rerun. Separate Gerber/drill ZIPs have been generated and committed for both boards using KiCad 10; they remain unapproved for actual hardware manufacture. Review the 3.3V regulator temperature/load, servo fuse and wiring, custom USB footprint and D+/D- layout, and all connector/capacitor clearances before placing a manufacturing order or powering motors. Upload a genuine cart screenshot once the cart includes all needed parts; keep its actual order cost separate from the provisional BOM subtotal.
 
 
 
