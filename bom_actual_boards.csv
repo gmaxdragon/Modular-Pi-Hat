@@ -1,25 +1,27 @@
 Board,References,Description,Quantity,Manufacturer,Manufacturer_Part_Number,DigiKey_Part_Number,Unit_USD,Extended_USD,Status,Notes
 MAIN,J11; EXT J1,4-position 5.08 mm terminal,2,Phoenix Contact,1715747,277-1265-ND,2.28,4.56,CART_CONFIRMED,"2 total, fits both boards"
-MAIN,MAIN J9,2-position 5.08 mm terminal,1,Phoenix Contact,1715721,277-1263-ND,1.16,1.16,CART_CONFIRMED,Servo supply inlet
-MAIN,MAIN J10,4-pin female OLED socket 0.1 inch,1,Samtec,SSW-104-01-G-S,612-SSW-104-01-G-S-ND,1.11,1.11,CART_CONFIRMED,Check OLED pin orientation and socket body
-MAIN,MAIN C3,470uF 10V radial 3.50mm pitch,1,Panasonic,EEU-FR1A471,P124219-ND,0.71,0.71,CART_CONFIRMED,Polarized
-EXT,EXT C1,100uF 25V radial polymer 2.50mm pitch,1,KYOCERA AVX,RPA0609101M025B,478-RPA0609101M025B-ND,0.87,0.87,CART_CONFIRMED,Polarized
-MAIN,MAIN F1,2A 32V MINI blade fuse,1,Littelfuse,0297002.WXNV,F986-ND,0.39,0.39,CART_CONFIRMED_PROVISIONAL_RATING,Fits MINI blade fuseholder; rated 2A needs servo stall current validation
-MAIN,MAIN U3,3.3V SOT-23-5 LDO,1,Diodes Inc,AP2112K-3.3TRG1,AP2112K-3.3TRG1CT-ND,0.28,0.28,SKU_VERIFIED_BY_PAGE_FAMILY,Cut tape replace ATR/TR quantity error; regulator thermal budget unresolved
-MAIN,MAIN J1,Raspberry Pi extra-tall 40-pin stacking socket,1,Adafruit,1979,1528-1783-ND,2.95,2.95,SKU_WEB_VERIFIED,Do not use 1979 as DigiKey SKU; check underside geometry
-MAIN,MAIN J8,USB-C 16-pin right-angle connector,1,GCT,USB4105-GF-A,2073-USB4105-GF-ACT-ND,0.80,0.80,SKU_WEB_VERIFIED,Custom land pattern mechanical check required
-MAIN,MAIN C4,22uF 10V X5R 1206,1,Samsung,CL31A226KPHNNNE,1276-1287-1-ND,0.47,0.47,SKU_PROVISIONAL,Verify cut-tape suffix against DigiKey page before purchase
-MAIN,MAIN C2 C7 C8,1uF 50V X5R 0805,3,Samsung,CL21A105KBCLNNC,1276-2396-1-ND,0.18,0.54,SKU_PROVISIONAL,Verify cut-tape suffix against DigiKey page before purchase
-MAIN,MAIN C5,100nF 50V X7R 0805,1,Samsung,CL21B104KBCNNNC,1276-1003-1-ND,0.10,0.10,SKU_PROVISIONAL,Verify cut-tape suffix against DigiKey page before purchase
-MAIN,MAIN R3 R4 R12 R13,10k 1% 0805 resistors,4,Yageo,RC0805FR-0710KL,311-10.0KCRCT-ND,0.10,0.40,SKU_PROVISIONAL,Replace reel SKU; verify exact CT SKU
-MAIN,MAIN R14 R15,4.7k 1% 0805 resistors,2,Yageo,RC0805FR-074K7L,311-4.70KCRCT-ND,0.10,0.20,SKU_PROVISIONAL,Replace reel SKU; verify exact CT SKU
-MAIN,MAIN R5 R6,5.1k 1% 0805 resistors,2,Bourns,CR0805-FX-5101ELF,CR0805-FX-5101ELFCT-ND,0.10,0.20,SKU_WEB_VERIFIED,USB-C CC pulldowns
-MAIN,MAIN R7 R8,22 ohm 1% 0805 resistors,2,Yageo,RC0805FR-0722RL,311-22.0CRCT-ND,0.10,0.20,SKU_PROVISIONAL,Verify exact cut-tape DigiKey code
-MAIN,MAIN R9,1k 1% 0805 resistor,1,Yageo,RC0805FR-071KL,311-1.00KCRCT-ND,0.10,0.10,SKU_PROVISIONAL,Verify exact cut-tape DigiKey code
-MAIN,MAIN R10,75k 1% 0805 resistor,1,Yageo,RC0805FR-0775KL,311-75.0KCRCT-ND,0.10,0.10,SKU_PROVISIONAL,Replaces wrong 100k quantity; verify CT
-MAIN,MAIN R11,100k 1% 0805 resistor,1,Yageo,RC0805FR-07100KL,311-100KCRCT-ND,0.11,0.11,SKU_PROVISIONAL,Only ONE 100k required
-MAIN,MAIN D1,Green 0805 LED,1,Lite-On,LTST-C170KGKT,160-1414-1-ND,0.19,0.19,SKU_PROVISIONAL,"Verify CT suffix, polarity"
-MAIN,MAIN SW1 RESET1,SMD tactile switch TL3305A,2,E-Switch,TL3305AF160QG,EG5350CT-ND,0.20,0.40,SKU_PROVISIONAL,Verify exact cut-tape SKU and footprint
-MAIN+EXT,MAIN J2 J3 J4 J5 J6 J7 J12; EXT J2 J3,Male 0.1 inch breakaway headers (39 pins total),1,Adafruit,392,1528-1370-ND,4.95,4.95,SKU_PROVISIONAL,One 10 x 36-pin strip PACK; verify actual packaging and MPN
-MAIN,MAIN U2,ESP32-S3-WROOM-1-N8R8 8MB PSRAM module,1,Espressif,ESP32-S3-WROOM-1-N8R8,5407-ESP32-S3-WROOM-1-N8R8CT-ND,6.32,6.32,DEFERRED_EXCLUDED_FROM_ORDER,Not in immediate cart at user request. Board cannot function without this module.
-MAIN,MAIN J10 accessory,0.96in I2C OLED display 3.3V,1,TBD,TBD,,0.00,0.00,UNSELECTED,Connector is on PCB. Buy module only if not already owned; check GND VCC SCL SDA.
+MAIN,J9,2-position 5.08 mm terminal,1,Phoenix Contact,1715721,277-1263-ND,1.16,1.16,CART_CONFIRMED,Servo supply inlet
+MAIN,J10,4-pin female OLED socket 0.1 inch,1,Samtec,SSW-104-01-G-S,612-SSW-104-01-G-S-ND,1.11,1.11,CART_CONFIRMED,Check OLED pin orientation and socket body
+MAIN,C3,470uF 10V radial 3.50mm pitch,1,Panasonic,EEU-FR1A471,P124219-ND,0.71,0.71,CART_CONFIRMED,Polarized
+EXT,C1,100uF 25V radial polymer 2.50mm pitch,1,KYOCERA AVX,RPA0609101M025B,478-RPA0609101M025B-ND,0.87,0.87,CART_CONFIRMED,Polarized
+MAIN,F1,2A 32V MINI blade fuse,1,Littelfuse,0297002.WXNV,F986-ND,0.39,0.39,CART_CONFIRMED_PROVISIONAL_RATING,Fits MINI blade fuseholder; rated 2A needs servo stall current validation
+MAIN,F1 (holder),PCB MINI blade fuse holder,1,Keystone Electronics,3568,36-3568-ND,1.31,1.31,SKU_WEB_VERIFIED,SEPARATE from F986-ND fuse. Matches PCB F1 footprint.
+MAIN,U3,3.3V SOT-23-5 LDO,1,Diodes Inc,AP2112K-3.3TRG1,AP2112K-3.3TRG1CT-ND,0.28,0.28,SKU_WEB_VERIFIED,Cut tape replace ATR/TR quantity error; regulator thermal budget unresolved
+MAIN,J1,Raspberry Pi extra-tall 40-pin stacking socket,1,Adafruit,1979,1528-1783-ND,2.95,2.95,SKU_WEB_VERIFIED,Do not use 1979 as DigiKey SKU; check underside geometry
+MAIN,J8,USB-C 16-pin right-angle connector,1,GCT,USB4105-GF-A,2073-USB4105-GF-ACT-ND,0.80,0.80,SKU_WEB_VERIFIED,Custom land pattern mechanical check required
+MAIN,C4,22uF 10V X5R 1206,1,Samsung,CL31A226KPHNNNE,1276-1287-1-ND,0.47,0.47,SKU_WEB_VERIFIED,Verify cut-tape suffix against DigiKey page before purchase
+MAIN,C2 C7 C8,1uF 50V X5R 0805,3,Samsung,CL21A105KBCLNNC,1276-2396-1-ND,0.15,0.45,SKU_WEB_VERIFIED,Verify cut-tape suffix against DigiKey page before purchase
+MAIN,C5,100nF 50V X7R 0805,1,Samsung,CL21B104KBCNNNC,1276-1003-1-ND,0.10,0.10,SKU_PROVISIONAL,Verify cut-tape suffix against DigiKey page before purchase
+MAIN,R3 R4 R12 R13,10k 1% 0805 resistors,4,Yageo,RC0805FR-0710KL,311-10.0KCRCT-ND,0.10,0.40,SKU_WEB_VERIFIED,Replace reel SKU; verify exact CT SKU
+MAIN,R14 R15,4.7k 1% 0805 resistors,2,Yageo,RC0805FR-074K7L,311-4.70KCRCT-ND,0.10,0.20,SKU_WEB_VERIFIED,Replace reel SKU; verify exact CT SKU
+MAIN,R5 R6,5.1k 1% 0805 resistors,2,Bourns,CR0805-FX-5101ELF,CR0805-FX-5101ELFCT-ND,0.10,0.20,SKU_WEB_VERIFIED,USB-C CC pulldowns
+MAIN,R7 R8,22 ohm 1% 0805 resistors,2,Yageo,RC0805FR-0722RL,311-22.0CRCT-ND,0.10,0.20,SKU_WEB_VERIFIED,Verify exact cut-tape DigiKey code
+MAIN,R9,1k 1% 0805 resistor,1,Yageo,RC0805FR-071KL,311-1.00KCRCT-ND,0.10,0.10,SKU_PROVISIONAL,Verify exact cut-tape DigiKey code
+MAIN,R10,75k 1% 0805 resistor,1,Yageo,RC0805FR-0775KL,311-75.0KCRCT-ND,0.10,0.10,SKU_PROVISIONAL,Replaces wrong 100k quantity; verify CT
+MAIN,R11,100k 1% 0805 resistor,1,Yageo,RC0805FR-07100KL,311-100KCRCT-ND,0.11,0.11,SKU_PROVISIONAL,Only ONE 100k required
+MAIN,D1,Green 0805 LED,1,Lite-On,LTST-C170KGKT,160-1414-1-ND,0.19,0.19,SKU_WEB_VERIFIED,"Verify CT suffix, polarity"
+MAIN,SW1 RESET1,SMD tactile switch TL3305A,2,E-Switch,TL3305AF160QG,EG5350CT-ND,0.20,0.40,SKU_WEB_VERIFIED,Verify exact cut-tape SKU and footprint
+MAIN+EXT,MAIN J2 J3 J4 J5 J6 J7 J12; EXT J2 J3,Male 0.1 inch breakaway headers (39 pins total),1,Adafruit,392,1528-392-ND,4.95,4.95,SKU_WEB_VERIFIED,One 10 x 36-pin strip PACK; verify actual packaging and MPN
+MAIN,U2,ESP32-S3-WROOM-1-N8R8 8MB PSRAM module,1,Espressif,ESP32-S3-WROOM-1-N8R8,5407-ESP32-S3-WROOM-1-N8R8CT-ND,6.32,6.32,DEFERRED_EXCLUDED_FROM_ORDER,Not in immediate cart at user request. Board cannot function without this module.
+MAIN,J10 accessory,0.91in SSD1306 128x32 3.3V OLED breakout; wire separately,1,DFRobot,DFR0648,1738-DFR0648-ND,9.90,9.90,SELECTED_CHECK_PHYSICAL,"Do NOT plug directly into J10: module order SDA SCL GND VCC differs. Use 4 keyed jumper wires GND,3V3,SCL,SDA"
+MAIN,J10 accessory wiring,6in 20-piece male-female jumper cable kit for OLED,1,SparkFun,12794,1568-12794-ND,2.75,2.75,SELECTED_CHECK_PHYSICAL,4 individual jumpers adapt J10 socket to OLED module; NEVER use for servo power
