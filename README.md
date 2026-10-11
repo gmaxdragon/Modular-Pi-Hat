@@ -51,11 +51,11 @@ The [Tier 2 purchasing BOM](bom.csv) covers both populated boards, their connect
 
 | Tier 2 budget | USD |
 | --- | ---: |
-| Indicative components, OLED and **two** PCB fabrication estimates, excluding ESP32 | $38.75 |
+| Indicative components, OLED and **two** PCB fabrication estimates, excluding ESP32 | $38.66 |
 | Tier 2 funding ceiling | $65.00 |
-| Nominal remaining **before** shipping, tariffs, tax and unpriced wiring | $26.25 |
+| Nominal remaining **before** shipping, tariffs, tax and unpriced wiring | $26.34 |
 
-The earlier **$36.78** draft included the $6.32 backordered ESP32, which is excluded from the present order. This revised **$38.75** estimate instead includes the $9.90 DFRobot DFR0648 OLED, its $2.75 jumper-wire adapter pack, the $1.11 Samtec socket already in the cart, and two provisional $2 PCB-fabrication estimates. The final landed cost remains unknown.
+The earlier **$36.78** draft included the $6.32 backordered ESP32, which is excluded from the present order. This revised **$38.66** estimate instead includes the $9.90 DFRobot DFR0648 OLED, its $2.75 jumper-wire adapter pack, the $1.11 Samtec socket already in the cart, and two provisional $2 PCB-fabrication estimates. The final landed cost remains unknown.
 
 ### DigiKey cart and downloadable upload files
 
