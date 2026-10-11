@@ -1,0 +1,68 @@
+name: Export Seizo Gerbers and drills
+
+on:
+  push:
+    paths:
+      - '.github/workflows/export-gerbers.yml'
+      - 'hardware/**/*.kicad_pcb'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fabrication-export:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout complete KiCad sources
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Export Gerbers and plated/non-plated drill files using KiCad 10
+        shell: bash
+        run: |
+          set -euo pipefail
+          boards=("main:test1" "servo-extender:SZSERVOEXTENDER")
+          for item in "${boards[@]}"; do
+            folder="${item%%:*}"
+            name="${item#*:}"
+            input="hardware/${folder}/${name}.kicad_pcb"
+            dest="fabrication/${folder}/plots"
+            mkdir -p "$dest"
+            test -s "$input"
+            docker run --rm -v "$PWD:/workspace" -w /workspace kicad/kicad:10.0 \
+              kicad-cli pcb export gerbers \
+              --layers F.Cu,B.Cu,F.Paste,B.Paste,F.SilkS,B.SilkS,F.Mask,B.Mask,Edge.Cuts \
+              --output "$dest/" "$input"
+            docker run --rm -v "$PWD:/workspace" -w /workspace kicad/kicad:10.0 \
+              kicad-cli pcb export drill \
+              --format excellon --drill-origin absolute \
+              --excellon-separate-th --output "$dest/" "$input"
+            test "$(find "$dest" -type f \( -name '*.gbr' -o -name '*.gtl' -o -name '*.gbl' \) | wc -l)" -ge 2
+            test "$(find "$dest" -type f -name '*.drl' | wc -l)" -ge 1
+            case "$folder" in
+              main) outfile=Seizo_Main_HAT_Gerbers.zip ;;
+              servo-extender) outfile=Seizo_Servo_Extender_Gerbers.zip ;;
+            esac
+            (cd "$dest" && zip -q -r "../${outfile}" .)
+            unzip -t "fabrication/${folder}/${outfile}"
+          done
+      - name: Upload printable fabrication archives
+        uses: actions/upload-artifact@v4
+        with:
+          name: Seizo_Gerber_and_Drill_ZIPs
+          path: |
+            fabrication/main/Seizo_Main_HAT_Gerbers.zip
+            fabrication/servo-extender/Seizo_Servo_Extender_Gerbers.zip
+          if-no-files-found: error
+      - name: Add generated Gerber ZIPs to repository
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add fabrication/main/Seizo_Main_HAT_Gerbers.zip fabrication/servo-extender/Seizo_Servo_Extender_Gerbers.zip
+          if ! git diff --cached --quiet; then
+            git commit -m 'Add KiCad 10 Gerber and Excellon drill archives for Seizo boards'
+            git push
+          fi
