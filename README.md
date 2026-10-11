@@ -53,7 +53,7 @@ The [Tier 2 purchasing BOM](bom.csv) covers both populated boards, their connect
 | --- | ---: |
 | Full estimated components including exact N8R8 ESP32, OLED and **two** PCB fabrication estimates | $44.98 |
 | Tier 2 funding ceiling | $65.00 |
-| Nominal remaining **before** shipping, tariffs, tax and unpriced wiring | $26.34 |
+| Nominal remaining **before** shipping, tariffs, tax and unpriced wiring | $20.02 |
 
 The previously reported **$36.78** shopping-cart figure has not been reconciled against a full cart screenshot. The full **$44.98** parts-plus-provisional-PCB estimate now includes the required $6.32 N8R8 ESP32, $9.90 DFRobot DFR0648 OLED, $2.75 jumper-wire adapter, $1.11 Samtec socket and two provisional $2 PCB-fabrication estimates. Shipping, tariffs, tax and unknown wiring costs are additional.
 
