@@ -29,6 +29,7 @@ jobs:
             input="hardware/${folder}/${name}.kicad_pcb"
             dest="fabrication/${folder}/plots"
             mkdir -p "$dest"
+            chmod 0777 "$dest"
             test -s "$input"
             docker run --rm -v "$PWD:/workspace" -w /workspace kicad/kicad:10.0 \
               kicad-cli pcb export gerbers \
