@@ -41,7 +41,7 @@
 | [Main PCB fabrication, 5 bare boards](https://jlcpcb.com/help/article/how-do-i-place-an-order) | Gerber/drill ZIP exists in fabrication/main/Seizo_Main_HAT_Gerbers.zip. $2 for 5 bare boards is a placeholder | 1 | $2.00 | $2.00 | [JLCPCB](https://jlcpcb.com/help/article/how-do-i-place-an-order) |
 | [Servo extender PCB fabrication, 5 bare boards](https://jlcpcb.com/help/article/how-do-i-place-an-order) | Gerber/drill ZIP exists in fabrication/servo-extender/Seizo_Servo_Extender_Gerbers.zip. Separate board fabrication order; $2 is placeholder | 1 | $2.00 | $2.00 | [JLCPCB](https://jlcpcb.com/help/article/how-do-i-place-an-order) |
 | **Parts subtotal** | — | — | — | **$45.09** | — |
-| **Tax & shipping** | — | — | — | **$13.00** | — |
-| **Total** | — | — | — | **$58.09** | — |
+| **Tax & shipping** | — | — | — | **$14.00** | — |
+| **Total** | — | — | — | **$59.09** | — |
 
-$6.91 left of the tier's funding.
+$5.91 left of the tier's funding.
