@@ -47,27 +47,28 @@ Servo power is not supplied by the ESP32 3.3V regulator. No powered motor testin
 
 The [Tier 2 purchasing BOM](bom.csv) covers both populated boards, their connectors, the **Littelfuse MINI 297 2A 32V fuse** (DigiKey F986-ND), the matching Keystone 3568 holder (36-3568-ND), a DigiKey OLED module and its pin-order adapter jumper leads, and two **provisional** bare-PCB fabrication estimates. It uses the actual 75k R10, 4.7k R14/R15, and four-pin Samtec SSW-104-01-G-S OLED socket selected in the cart.
 
-**ESP32-S3-WROOM-1-N8R8 is now listed in the full purchasing CSV at a web-snapshot unit price of $6.32.** It is physically required by the unmodified KiCad design. Confirm current stock and purchase it before powering/testing the HAT. Do not substitute ESP32-S3-WROOM-1-N8, which lacks the specified PSRAM, without a real design review. The bottom-left EEPROM components C1, JP1, R1, R2, U1 are intentionally excluded from board assembly and purchasing.
+**ESP32-S3-WROOM-1-N8R8 is included in the updated 26-line DigiKey cart file at a web-snapshot unit price of $6.32.** It is physically required by the unmodified KiCad design. Confirm current stock and purchase it before powering/testing the HAT. Do not substitute ESP32-S3-WROOM-1-N8, which lacks the specified PSRAM, without a real design review. The bottom-left EEPROM components C1, JP1, R1, R2, U1 are intentionally excluded from board assembly and purchasing.
 
 | Tier 2 budget | USD |
 | --- | ---: |
-| Full estimated components including exact N8R8 ESP32, OLED and **two** PCB fabrication estimates | $44.98 |
+| Full estimated components including exact N8R8 ESP32, OLED and **two** PCB fabrication estimates | $45.09 |
 | Tier 2 funding ceiling | $65.00 |
-| Nominal remaining **before** shipping, tariffs, tax and unpriced wiring | $20.02 |
+| Nominal remaining **before** shipping, tariffs, tax and unpriced wiring | $19.91 |
 
-The previously reported **$36.78** shopping-cart figure has not been reconciled against a full cart screenshot. The full **$44.98** parts-plus-provisional-PCB estimate now includes the required $6.32 N8R8 ESP32, $9.90 DFRobot DFR0648 OLED, $2.75 jumper-wire adapter, $1.11 Samtec socket and two provisional $2 PCB-fabrication estimates. Shipping, tariffs, tax and unknown wiring costs are additional.
+The previously reported **$36.78** shopping-cart figure has not been reconciled against a full cart screenshot. The $45.09 estimate reflects revised $0.18 single-piece 1uF capacitors and $0.21 tactile switches. This is NOT a cart quote. The full **$45.09** parts-plus-provisional-PCB estimate now includes the required $6.32 N8R8 ESP32, $9.90 DFRobot DFR0648 OLED, $2.75 jumper-wire adapter, $1.11 Samtec socket and two provisional $2 PCB-fabrication estimates. Shipping, tariffs, tax and unknown wiring costs are additional.
 
 ### DigiKey cart and downloadable upload files
 
-- [Add only missing 19 items](purchasing/Seizo_DigiKey_ADD_ONLY_19_missing_DigiKey_OLED.csv): use with the user's existing six-item cart; does **not** add the 2A fuse again.
-- [All 25 DigiKey purchase lines](purchasing/Seizo_DigiKey_FULL_CART_25_lines_DigiKey_OLED.csv): import **only into an empty cart**.
+- [Add only 20 missing items](purchasing/Seizo_DigiKey_ADD_ONLY_20_missing.csv): use only if your cart still contains exactly the original six accepted parts; includes the N8R8 ESP32 and does **not** duplicate the fuse.
+- [All 26 DigiKey product lines](purchasing/Seizo_DigiKey_Cart_Upload_26.csv): import **only into an empty cart/list**; includes the exact ESP32-S3-WROOM-1-N8R8.
+- [Original 25-line CSV without ESP32](purchasing/Seizo_DigiKey_FULL_CART_25_lines_DigiKey_OLED.csv): historical variant ONLY if you purchase the exact N8R8 separately from Mouser/LCSC; it is **not** a complete system BOM.
 - [Cart correction and unresolved external materials](purchasing/README.md).
 
 DigiKey's six accepted lines totaled **$8.80** for components, with **$8.49** estimated shipping and **$2.74** estimated tariffs, or **$20.03**, **before** adding the missing components. The 17 failed import entries largely used full-reel rather than cut-tape SKUs and ambiguous vendor part numbers, not real board defects.
 
 The fuse and holder are the same MINI 297 physical family, but the **2A rating is not a verified servo-protection design**. Confirm servo stall currents, external supply current limit, operating voltage and interconnect-wire ampacity **before powering motors**. The 3.3V regulator thermal budget, USB connector land pattern, stacking mechanical fit, and exact board fabrication quote remain open.
 
-**DO NOT plug the DFRobot DFR0648 OLED directly into Seizo J10.** The module's physical pin order differs from J10. Use four individual male-to-female jumpers: J10 GND to OLED GND, 3V3 to VCC, SCL to SCL, SDA to SDA. The genuine cart screenshot should show **all 26 estimated DigiKey product lines including the ESP32, if purchasing the whole system, and the actual landed total**. The OLED module and its jumper-wire adapter are included in the corrected DigiKey import. PCB fabrication, the four-conductor servo interconnect, and existing motors/power supplies are **not included** in the prior 25-item non-ESP32 DigiKey cart. The current CSV does include the ESP32 as a needed purchase. A four-conductor cable between J11 and the extender's J1 is required unless already owned. Prices cannot be guaranteed until checkout.
+**DO NOT plug the DFRobot DFR0648 OLED directly into Seizo J10.** The module's physical pin order differs from J10. Use four individual male-to-female jumpers: J10 GND to OLED GND, 3V3 to VCC, SCL to SCL, SDA to SDA. The genuine cart screenshot should show **all 26 estimated DigiKey product lines including the ESP32, if purchasing the whole system, and the actual landed total**. The OLED module and its jumper-wire adapter are included in the corrected DigiKey import. PCB fabrication, the four-conductor servo interconnect, and existing motors/power supplies are **not included** in the prior 25-item non-ESP32 DigiKey cart. The current CSV does include the ESP32 as a needed purchase. A four-conductor cable between J11 and the extender's J1 is required unless already owned. Prices and inventory cannot be guaranteed until checkout. The DigiKey N8R8 product page has shown conflicting stock snapshots. If its cut-tape SKU is unavailable in your actual cart, buy the IDENTICAL bare module ESP32-S3-WROOM-1-N8R8 from [Mouser](https://www.mouser.com/ProductDetail/Espressif-Systems/ESP32-S3-WROOM-1-N8R8) (listed $6.28) or [LCSC](https://www.lcsc.com/product-detail/wifi%20modules_espressif%20systems_esp32-s3-wroom-1-n8r8_C2913201.html) (listed $5.04); account for extra shipping/tariffs. Remove the line from the DIGIKEY cart only, not bom.csv, as the design still requires it. Do not replace it with the N8, 1U, or a whole development board without a PCB/firmware review.
 
 `BOM.md` and `JOURNAL.md` are auto-generated by Half Life and deliberately not edited. Use Half Life's **Import from repo** function after syncing this new `bom.csv` if it supports this format; verify each displayed quantity and total.
 
