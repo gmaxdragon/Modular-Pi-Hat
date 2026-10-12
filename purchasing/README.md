@@ -2,44 +2,36 @@
 
 **Scope:** main Raspberry Pi HAT and separate passive servo extender. Their populated components were reconciled against the KiCad PCB and schematic files in this repository. Both boards are untested prototypes; the zero-warning KiCad DRC reported by the designer is not an electrical/thermal safety certification.
 
-**October 11 update:** The complete [bom.csv](../bom.csv) contains 28 estimate lines, **$45.09** for 26 DigiKey product lines (including the exact N8R8 ESP32) plus two provisional PCB fabrication lines. The new recommended CSV files are **26 products for an empty cart** and **20 missing products for the unchanged original six-item cart**. Older 25/19-line files omit the ESP32 and are archived for a separately sourced module. The new 26/20-line CSV files already include **one ESP32-S3-WROOM-1-N8R8**, so do not add a duplicate; online unit price snapshot **$6.32**, DigiKey [part listing](https://www.digikey.com/en/products/detail/espressif-systems/ESP32-S3-WROOM-1-N8R8/15295891). The user's previously reported **$36.78** cart figure is not independently verified and does not match the complete engineering estimate.
+**October 11 purchasing decision:** Source the main-board U2 module, exact **ESP32-S3-WROOM-1-N8R8**, from [Mouser](https://www.mouser.com/en/ProductDetail/Espressif-Systems/ESP32-S3-WROOM-1-N8R8?qs=7D1LtPJG0i3%2F28hKFavOpQ%3D%3D). Mouser # **356-EP32S3WROOM1N8R8**, quantity 1, quoted unit price **$6.28**. It is the required 8 MB flash / 8 MB PSRAM version with PCB antenna, not N8 or 1U.
 
-## Exact cart files (do not duplicate six existing items)
+The engineering [bom.csv](../bom.csv) lists **25 DigiKey product lines + one Mouser ESP32 + two provisional JLCPCB bare-board fabrication lines**, all 28 rows retained. Quoted parts subtotal **$41.05**, provisional PCB estimates **$4.00**, combined **$45.05** before shipping, tariffs, taxes and still-unpriced servo wiring. Half Life Tier 2 ceiling **$65.00**, nominal remaining **$19.95** before these extra costs. Pricing and stock are not reserved.
 
-**Existing DigiKey cart with exactly the original six accepted products:** upload [20 missing line items including N8R8 ESP32](Seizo_DigiKey_ADD_ONLY_20_missing.csv). Do not use if you have already added other items or changed the original six; reconcile duplicates first. The original [19-item CSV](Seizo_DigiKey_ADD_ONLY_19_missing_DigiKey_OLED.csv) omits the ESP32, and is preserved as a historical alternate.
+## Correct DigiKey cart imports (ESP32 excluded)
 
-**Brand-new EMPTY DigiKey cart/list:** upload [all 26 items including N8R8 ESP32](Seizo_DigiKey_Cart_Upload_26.csv). Do not use it with a partially filled cart. The historical [25-line CSV](Seizo_DigiKey_FULL_CART_25_lines_DigiKey_OLED.csv) deliberately excludes the ESP32; use it ONLY if purchasing that exact module externally.
+- Start with **an empty DigiKey cart** and upload the [25-item DigiKey-only CSV](Seizo_DigiKey_FULL_CART_25_lines_DigiKey_OLED.csv). Order the Mouser ESP32 separately using the link above.
+- If your cart still contains the **original six accepted items**, add [19 missing DigiKey-only items](Seizo_DigiKey_ADD_ONLY_19_missing_DigiKey_OLED.csv), and order the Mouser ESP32 separately. Check for duplicates if the cart has changed.
+- The [26-item](Seizo_DigiKey_Cart_Upload_26.csv) and [20-item add-only](Seizo_DigiKey_ADD_ONLY_20_missing.csv) DigiKey files contain an ESP32 and are alternate old sourcing options. **Do not use those and also buy the module from Mouser.**
 
-CSV files are for DigiKey's **Upload a List** flow; check column mapping for `Part Number`, `Quantity`, and `Customer Reference`. Headerless text files are for **Bulk Add**, which explicitly expects lines in `quantity, part number, reference` order. If you manually added some rejected parts since the six-item screenshot, remove duplicates before using the add-only file. Every SKU and availability must be confirmed in the actual cart.
+Use DigiKey Upload a List and match Part Number, Quantity and Customer Reference. Buy 1 × Mouser **356-EP32S3WROOM1N8R8** as a separate order. Save genuine evidence for both vendor carts and include all delivered costs in Half Life.
 
-## Actual items and corrected estimate
+## Estimated purchasing split
 
-| Item | USD |
+| Vendor/item | USD |
 | --- | ---: |
-| Six existing DigiKey items, exactly as shown in screenshot | $8.80 |
-| Remaining 19 DigiKey items, estimated displayed unit prices | $25.97 |
-| **Estimated original 25-line DigiKey parts subtotal (without ESP32)** | **$34.77** |
-| Additional ESP32-S3-WROOM-1-N8R8, current quote to verify in cart | $6.32 |
-| **Estimated 26-line DigiKey parts subtotal** | **$41.09** |
-| Main HAT board fabrication, *provisional* | $2.00 |
-| Servo extender fabrication, *provisional* | $2.00 |
-| **Estimated components + two bare PCB fabrication orders including ESP32** | **$45.09** |
-| **Half Life Tier 2 budget** | **$65.00** |
-| Nominal available **before** shipping, tax, tariffs, and servo wiring | **$19.91** |
+| Six DigiKey items already in original cart | $8.80 |
+| Nineteen remaining DigiKey product lines | $25.97 |
+| **DigiKey total, 25 lines** | **$34.77** |
+| **Mouser ESP32, one module** | **$6.28** |
+| **Estimated components** | **$41.05** |
+| Main bare PCB estimate | $2.00 |
+| Extender bare PCB estimate | $2.00 |
+| **Combined provisional total** | **$45.05** |
+| Half Life Tier 2 funding | $65.00 |
+| Remaining before shipping/tax/tariffs/wiring | $19.95 |
 
-Your **$36.78** cart total must be verified against a real current screenshot. The **$45.09** full engineering estimate includes the actual N8R8 ESP32, DFRobot OLED module, Samtec socket, correctly pinned jumper cables and two separate provisional bare-PCB fabrication amounts. The first partial cart displayed **$8.49 shipping** and **$2.74 tariffs** with just six accepted items. Freight, tariffs and tax for the full cart plus PCB fabrication shipping have not been quoted. Do not treat $45.09 as an all-in checkout cost.
+The prior $36.78 cart figure is not an independently verified complete cart. PCB and vendor shipping/tariffs/taxes are unquoted. Avoid double-counting any separately ordered ESP32. The Half Life-generated BOM.md and JOURNAL.md files will overwrite manual edits; update the source bom.csv and reimport from the repo.
 
 
-## Exact-module ESP32 sourcing fallback (checked October 11, 2026)
-
-DigiKey [N8R8 cut-tape listing](https://www.digikey.com/en/products/detail/espressif-systems/ESP32-S3-WROOM-1-N8R8/15295891): **5407-ESP32-S3-WROOM-1-N8R8CT-ND**, listed $6.32. Public indexed stock counts have varied, including earlier unavailable and later positive counts. **The live cart is decisive.**
-
-If unavailable, purchase the SAME Espressif manufacturer part **ESP32-S3-WROOM-1-N8R8**, not a replacement footprint or development board:
-
-- [Mouser exact module](https://www.mouser.com/ProductDetail/Espressif-Systems/ESP32-S3-WROOM-1-N8R8), about **$6.28** for one, stock shown on recent supplier page.
-- [LCSC C2913201 exact module](https://www.lcsc.com/product-detail/wifi%20modules_espressif%20systems_esp32-s3-wroom-1-n8r8_C2913201.html), about **$5.04** for one, stock shown on supplier page. International shipping and duty may outweigh the lower part price.
-
-Choose the lowest *delivered* quote; do not double-count ESP32 in the BOM. If bought externally, remove just the line from the DigiKey *cart*, keep it as a required line in `bom.csv`, and replace its unit price/vendor with the actual source only once confirmed. Do not silently alter the KiCad symbol/footprint or substitute N8/1U.
 
 ## Fuse and connector: selected separately
 
@@ -61,17 +53,17 @@ Solder four male header pins to the OLED from the purchased breakaway header pac
 
 ## Excluded, future or already owned hardware
 
-- **ESP32-S3-WROOM-1-N8R8** (8 MB flash / 8 MB PSRAM) is included in the BOM and the new 26/20-line cart CSVs at a $6.32 USD DigiKey price snapshot, but missing from historical 25/19-line imports. The complete HAT cannot operate without it. Add this exact module to your shopping cart and verify stock; do not substitute the non-PSRAM N8 model.
+- **ESP32-S3-WROOM-1-N8R8** is included in the engineering BOM, but not in the recommended 25/19-line DigiKey-only imports. Buy it separately from [Mouser](https://www.mouser.com/en/ProductDetail/Espressif-Systems/ESP32-S3-WROOM-1-N8R8?qs=7D1LtPJG0i3%2F28hKFavOpQ%3D%3D), $6.28 quoted, Mouser # 356-EP32S3WROOM1N8R8. Do not substitute the non-PSRAM N8 model.
 - Schematic-only EEPROM options **C1, R1, R2, U1 and JP1** are intentionally excluded from this populated board and purchase list. Extender **C1**, however, is a **real** 100uF capacitor already in the cart.
-- A 4-conductor main-to-extender cable (**servo supply, ground, wrist signal and gripper signal**) is necessary unless already owned. Its route, length, conductor gauge and cost have not been specified; **not priced** in the $41.09.
+- A 4-conductor main-to-extender cable (**servo supply, ground, wrist signal and gripper signal**) is necessary unless already owned. Its route, length, conductor gauge and cost have not been specified; **not priced** in the $41.05 component subtotal.
 - Raspberry Pi 4, fan, servos, their external regulated power supply, mounting bolts/spacers, any other motor drivers and physical wiring are pre-existing or not confirmed as new purchases. Verify compatibility and existing inventory, not silently assign them a $0 purchase cost.
 - Each board has a separate JLCPCB order. $2 bare-board figures are estimates, **not quotes**. KiCad 10 Gerber/drill ZIPs now exist for [main](../fabrication/main/Seizo_Main_HAT_Gerbers.zip) and [extender](../fabrication/servo-extender/Seizo_Servo_Extender_Gerbers.zip), but they are **not** manufacturer-approved or hardware-safety-tested.
 
 ## To finish the Half Life cart evidence
 
-1. Import **20 missing items** to the unchanged original six-line DigiKey cart (or **26** to a new empty cart/list). If DigiKey shows unavailable N8R8 stock, source the exact module externally and remove only its DigiKey cart line.
+1. Import **19 missing DigiKey-only items** if your original six-line cart is unchanged, or **25** into a new empty DigiKey cart. Source the single ESP32 via [Mouser](https://www.mouser.com/en/ProductDetail/Espressif-Systems/ESP32-S3-WROOM-1-N8R8?qs=7D1LtPJG0i3%2F28hKFavOpQ%3D%3D) separately.
 2. Resolve any errors; check all quantities and products. In particular confirm holder **36-3568-ND**, fuse **F986-ND**, OLED **1738-DFR0648-ND**, and cables **1568-12794-ND**.
-3. Take **genuine screenshots of the updated cart and actual totals**, including shipping/tariffs. If ESP32 is sourced from another vendor, preserve evidence of that separately and include its actual cost. Attach the required evidence in Half Life. A synthetic screenshot is not legitimate purchase evidence.
+3. Take **genuine screenshots of the DigiKey and Mouser carts and their actual totals**, including shipping, tariffs and tax. Attach the required evidence in Half Life. A synthetic screenshot is not legitimate purchase evidence.
 4. Sync the Half Life project and re-run its repository check. The native KiCad source files are under `hardware/main/` and `hardware/servo-extender/` and have been verified in GitHub. Do not edit auto-managed `JOURNAL.md` or `BOM.md`.
 
 **Hardware release remains unverified:** custom USB footprint/return path, regulator thermal load, fuse rating with actual servo stall loads, exact PCB fabrication quote, and physical Pi/HAT stack fit all require confirmation. Documentation readiness is not permission to power or install in a moving robot.
