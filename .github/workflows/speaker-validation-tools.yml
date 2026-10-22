@@ -1,0 +1,58 @@
+name: Speaker native KiCad tools
+on:
+  push:
+    branches: [speaker-design-validation-tools]
+    paths: [.github/workflows/speaker-validation-tools.yml]
+permissions:
+  contents: read
+jobs:
+  bundle:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Install official KiCad 10 and native Python support
+        run: |
+          sudo add-apt-repository --yes ppa:kicad/kicad-10.0-releases
+          sudo apt-get update -qq
+          sudo apt-get install --no-install-recommends -y kicad python3.12 python3-wxgtk4.0 xvfb
+          kicad-cli version
+          /usr/bin/python3 -c 'import pcbnew; print(pcbnew.GetBuildVersion())'
+      - name: Bundle self-contained validation runtime
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p runtime/root
+          python3 - <<'PY'
+          import os, pathlib, shutil, subprocess, re
+          root=pathlib.Path('runtime/root')
+          files=set()
+          for package in ('kicad','python3.12','python3.12-minimal','libpython3.12-stdlib','libpython3.12-minimal','python3-wxgtk4.0','xvfb','xkb-data','libgl1-mesa-dri'):
+              p=subprocess.run(['dpkg','-L',package],text=True,capture_output=True)
+              for line in p.stdout.splitlines():
+                  if os.path.isfile(line) and not line.startswith(('/usr/share/doc/','/usr/share/man/','/usr/share/locale/')):
+                      files.add(line)
+          files.update(['/usr/bin/python3.12','/usr/bin/kicad-cli','/usr/bin/Xvfb'])
+          native=[]
+          for name in list(files):
+              try:
+                  with open(name,'rb') as f: magic=f.read(4)
+                  if magic==b'\x7fELF': native.append(name)
+              except OSError: pass
+          for name in native:
+              out=subprocess.run(['ldd',name],text=True,capture_output=True).stdout
+              for item in re.findall(r'(/[^\s()]+)',out):
+                  if os.path.isfile(item): files.add(item)
+          for name in sorted(files):
+              dst=root/name.lstrip('/')
+              dst.parent.mkdir(parents=True,exist_ok=True)
+              shutil.copy2(name,dst,follow_symlinks=True)
+          print('Runtime files:',len(files))
+          PY
+          tar -C runtime -czf kicad10-runtime.tar.gz root
+          ls -lh kicad10-runtime.tar.gz
+      - uses: actions/upload-artifact@v4
+        with:
+          name: kicad10-runtime
+          path: kicad10-runtime.tar.gz
+          retention-days: 1
+          compression-level: 0
