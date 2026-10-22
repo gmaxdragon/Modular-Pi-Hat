@@ -1,0 +1,47 @@
+name: Speaker reference assets
+on:
+  push:
+    branches: [speaker-design-validation-tools]
+    paths: [.github/workflows/speaker-reference-assets.yml]
+permissions:
+  contents: read
+jobs:
+  assets:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 6
+    steps:
+      - name: Fetch manufacturer CAD and official library references
+        run: |
+          python3 - <<'PY'
+          import urllib.request,urllib.parse,json,pathlib,concurrent.futures
+          root=pathlib.Path('assets');root.mkdir()
+          tasks=[('Pololu_D24V10F3.step','https://www.pololu.com/file/0J1375/pololu-1a-step-down-voltage-regulator-d24v10fx.step')]
+          for p in ['Connector_Audio.3dshapes/Jack_3.5mm_CUI_SJ1-3533NG_Horizontal.wrl','Potentiometer_THT.3dshapes/Potentiometer_Bourns_PTV09A-2_Single_Horizontal.wrl','LICENSE.md','LICENSE']:
+              tasks.append((p,'https://raw.githubusercontent.com/KiCad/kicad-packages3D/master/'+urllib.parse.quote(p,safe='/')))
+          project=urllib.parse.quote('kicad/libraries/kicad-packages3D',safe='')
+          for folder in ['Connector_Audio.3dshapes','Potentiometer_THT.3dshapes']:
+              entries=[]
+              for page in range(1,7):
+                  url=f'https://gitlab.com/api/v4/projects/{project}/repository/tree?path={urllib.parse.quote(folder)}&per_page=100&page={page}'
+                  try: data=json.load(urllib.request.urlopen(url,timeout=25))
+                  except Exception as e: print(e);break
+                  entries.extend(data)
+                  if len(data)<100:break
+              (root/(folder+'.json')).write_text(json.dumps(entries,indent=2))
+              for e in entries:
+                  if '3533' in e['name'] or 'PTV09A' in e['name']:
+                      tasks.append((e['path'],'https://gitlab.com/kicad/libraries/kicad-packages3D/-/raw/master/'+urllib.parse.quote(e['path'],safe='/')))
+          def get(t):
+              path,url=t
+              try:
+                  data=urllib.request.urlopen(url,timeout=45).read();p=root/path;p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(data)
+                  return dict(path=path,url=url,bytes=len(data))
+              except Exception as e:return dict(path=path,url=url,error=str(e))
+          with concurrent.futures.ThreadPoolExecutor(max_workers=5) as p: results=list(p.map(get,tasks))
+          (root/'provenance.json').write_text(json.dumps(results,indent=2));print(json.dumps(results,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: speaker-reference-assets
+          path: assets
+          retention-days: 1
