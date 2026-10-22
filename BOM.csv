@@ -1,0 +1,30 @@
+Item,Qty,Supplier,Cost/item,Total Cost,link
+"ESP32-S3-WROOM-1-N8R8 module, 8MB flash + 8MB PSRAM",1,Mouser,$6.28,$6.28,https://www.mouser.com/en/ProductDetail/Espressif-Systems/ESP32-S3-WROOM-1-N8R8?qs=7D1LtPJG0i3%2F28hKFavOpQ%3D%3D
+AP2112K-3.3 3.3 V LDO regulator,1,DigiKey,$0.28,$0.28,https://www.digikey.com/en/products/detail/diodes-incorporated/AP2112K-3-3TRG1/4470746
+40-pin extra-tall 2x20 female stacking header,1,DigiKey,$2.95,$2.95,https://www.digikey.com/en/products/detail/adafruit-industries-llc/1979/6238003
+4-way 5.08 mm Phoenix screw terminal,2,DigiKey,$2.28,$4.56,https://www.digikey.com/en/products/detail/phoenix-contact/1715747/260633
+2-way 5.08 mm Phoenix screw terminal,1,DigiKey,$1.16,$1.16,https://www.digikey.com/en/products/detail/phoenix-contact/1715721/260631
+"Breakaway 0.1 inch male pin header strips, 10-pack",1,DigiKey,$4.95,$4.95,https://www.digikey.com/en/products/detail/adafruit-industries-llc/392/21283800
+USB-C USB2.0 receptacle,1,DigiKey,$0.80,$0.80,https://www.digikey.com/en/products/detail/gct/USB4105-GF-A/11198441
+470 uF 10 V through-hole capacitor,1,DigiKey,$0.71,$0.71,https://www.digikey.com/en/products/detail/panasonic-industry/EEU-FR1A471/9921021
+100 uF 25 V through-hole capacitor,1,DigiKey,$0.87,$0.87,https://www.digikey.com/en/products/detail/kyocera-avx/RPA0609101M025B/17634433
+22 uF 10 V 1206 ceramic capacitor,1,DigiKey,$0.47,$0.47,https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL31A226KPHNNNE/3886945
+1 uF 50 V 0805 ceramic capacitor,3,DigiKey,$0.18,$0.54,https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21A105KBCLNNC/3888054
+100 nF 50 V 0805 ceramic capacitor,1,DigiKey,$0.10,$0.10,https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21B104KBCNNNC/3886661
+10k 1 percent 0805 resistor,4,DigiKey,$0.10,$0.40,https://www.digikey.com/en/products/detail/yageo/RC0805FR-0710KL/727535
+5.1k 1 percent 0805 resistor,2,DigiKey,$0.10,$0.20,https://www.digikey.com/en/products/detail/bourns-inc/CR0805-FX-5101ELF/4247942
+22 ohm 1 percent 0805 resistor,2,DigiKey,$0.10,$0.20,https://www.digikey.com/en/products/detail/yageo/RC0805FR-0722RL/727735
+1k 1 percent 0805 resistor,1,DigiKey,$0.10,$0.10,https://www.digikey.com/en/products/detail/yageo/RC0805FR-071KL/727444
+75k 1 percent 0805 resistor,1,DigiKey,$0.10,$0.10,https://www.digikey.com/en/products/detail/yageo/RC0805FR-0775KL/731080
+100k 1 percent 0805 resistor,1,DigiKey,$0.11,$0.11,https://www.digikey.com/en/products/detail/yageo/RC0805FR-07100KL/727544
+4.7k 1 percent 0805 resistor,2,DigiKey,$0.10,$0.20,https://www.digikey.com/en/products/detail/yageo/RC0805FR-074K7L/727929
+Green 0805 LED,1,DigiKey,$0.19,$0.19,https://www.digikey.com/en/products/detail/lite-on-inc/LTST-C170KGKT/386777
+SPST SMD tactile switch,2,DigiKey,$0.21,$0.42,https://www.digikey.com/en/products/detail/e-switch/TL3305AF160QG/5816181
+Keystone mini blade through-hole fuse holder,1,DigiKey,$1.31,$1.31,https://www.digikey.com/en/products/detail/keystone-electronics/3568/2137306
+"Littelfuse MINI 297 2A 32V blade fuse, selected for prototype",1,DigiKey,$0.39,$0.39,https://www.digikey.com/en/products/detail/littelfuse-inc/0297002-WXNV/124900
+"0.91 inch white 128x32 SSD1306 I2C OLED breakout, DFRobot DFR0648",1,DigiKey,$9.90,$9.90,https://www.digikey.com/en/products/detail/dfrobot/DFR0648/12324932
+4-position 2.54mm Samtec OLED female socket,1,DigiKey,$1.11,$1.11,https://www.digikey.com/en/products/detail/samtec-inc/SSW-104-01-G-S/1112103
+"6 inch male-to-female jumper cable kit, 20 wires, for OLED J10 pin-order correction",1,DigiKey,$2.75,$2.75,https://www.digikey.com/en/products/detail/sparkfun-electronics/12794/5993859
+"Main PCB fabrication, 5 bare boards",1,JLCPCB,$4.00,$4.00,https://jlcpcb.com/help/article/how-do-i-place-an-order
+"Servo extender PCB fabrication, 5 bare boards",1,JLCPCB,$4.00,$4.00,https://jlcpcb.com/help/article/how-do-i-place-an-order
+Estimated total shipping,1,,,$30.00,
