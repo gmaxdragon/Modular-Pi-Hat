@@ -43,38 +43,51 @@ On the **extender's** three-pin servo headers, pin 1 is GND, pin 2 is servo powe
 
 Servo power is not supplied by the ESP32 3.3V regulator. No powered motor testing is authorized by these documents.
 
-## Bill of materials and Tier 2 funding
+## Bill of materials
 
-The [Tier 2 purchasing BOM](bom.csv) covers both populated boards, their connectors, the **Littelfuse MINI 297 2A 32V fuse** (DigiKey F986-ND), the matching Keystone 3568 holder (36-3568-ND), a DigiKey OLED module and its pin-order adapter jumper leads, and two **provisional** bare-PCB fabrication estimates. It uses the actual 75k R10, 4.7k R14/R15, and four-pin Samtec SSW-104-01-G-S OLED socket selected in the cart.
+Source: [BOM.csv](BOM.csv), as recorded at commit `def7dec164d41e28f6db09647bfb2a51c4ae3624`. The item names, quantities, supplier links, and costs below are copied from that file. Prices are recorded estimates, not refreshed supplier quotes. PCB fabrication and shipping figures are estimates. No additional tax, customs, or unlisted wiring costs have been invented.
 
-**ESP32-S3-WROOM-1-N8R8 is now selected from [Mouser](https://www.mouser.com/en/ProductDetail/Espressif-Systems/ESP32-S3-WROOM-1-N8R8?qs=7D1LtPJG0i3%2F28hKFavOpQ%3D%3D) for $6.28 per unit (quoted).** Mouser ordering number: 356-EP32S3WROOM1N8R8. It remains required by the original PCB design. Source one exact bare SMD module separately from the 25 DigiKey parts. Do not substitute the N8, 1U or a development board. The bottom-left EEPROM components C1, JP1, R1, R2, U1 are intentionally excluded from board assembly and purchasing.
+| Item | Qty | Supplier | Cost/item (USD) | Total cost (USD) | Link |
+| --- | ---: | --- | ---: | ---: | --- |
+| ESP32-S3-WROOM-1-N8R8 module, 8MB flash + 8MB PSRAM | 1 | Mouser | $6.28 | $6.28 | [Part](https://www.mouser.com/en/ProductDetail/Espressif-Systems/ESP32-S3-WROOM-1-N8R8?qs=7D1LtPJG0i3%2F28hKFavOpQ%3D%3D) |
+| AP2112K-3.3 3.3 V LDO regulator | 1 | DigiKey | $0.28 | $0.28 | [Part](https://www.digikey.com/en/products/detail/diodes-incorporated/AP2112K-3-3TRG1/4470746) |
+| 40-pin extra-tall 2x20 female stacking header | 1 | DigiKey | $2.95 | $2.95 | [Part](https://www.digikey.com/en/products/detail/adafruit-industries-llc/1979/6238003) |
+| 4-way 5.08 mm Phoenix screw terminal | 2 | DigiKey | $2.28 | $4.56 | [Part](https://www.digikey.com/en/products/detail/phoenix-contact/1715747/260633) |
+| 2-way 5.08 mm Phoenix screw terminal | 1 | DigiKey | $1.16 | $1.16 | [Part](https://www.digikey.com/en/products/detail/phoenix-contact/1715721/260631) |
+| Breakaway 0.1 inch male pin header strips, 10-pack | 1 | DigiKey | $4.95 | $4.95 | [Part](https://www.digikey.com/en/products/detail/adafruit-industries-llc/392/21283800) |
+| USB-C USB2.0 receptacle | 1 | DigiKey | $0.80 | $0.80 | [Part](https://www.digikey.com/en/products/detail/gct/USB4105-GF-A/11198441) |
+| 470 uF 10 V through-hole capacitor | 1 | DigiKey | $0.71 | $0.71 | [Part](https://www.digikey.com/en/products/detail/panasonic-industry/EEU-FR1A471/9921021) |
+| 100 uF 25 V through-hole capacitor | 1 | DigiKey | $0.87 | $0.87 | [Part](https://www.digikey.com/en/products/detail/kyocera-avx/RPA0609101M025B/17634433) |
+| 22 uF 10 V 1206 ceramic capacitor | 1 | DigiKey | $0.47 | $0.47 | [Part](https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL31A226KPHNNNE/3886945) |
+| 1 uF 50 V 0805 ceramic capacitor | 3 | DigiKey | $0.18 | $0.54 | [Part](https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21A105KBCLNNC/3888054) |
+| 100 nF 50 V 0805 ceramic capacitor | 1 | DigiKey | $0.10 | $0.10 | [Part](https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21B104KBCNNNC/3886661) |
+| 10k 1 percent 0805 resistor | 4 | DigiKey | $0.10 | $0.40 | [Part](https://www.digikey.com/en/products/detail/yageo/RC0805FR-0710KL/727535) |
+| 5.1k 1 percent 0805 resistor | 2 | DigiKey | $0.10 | $0.20 | [Part](https://www.digikey.com/en/products/detail/bourns-inc/CR0805-FX-5101ELF/4247942) |
+| 22 ohm 1 percent 0805 resistor | 2 | DigiKey | $0.10 | $0.20 | [Part](https://www.digikey.com/en/products/detail/yageo/RC0805FR-0722RL/727735) |
+| 1k 1 percent 0805 resistor | 1 | DigiKey | $0.10 | $0.10 | [Part](https://www.digikey.com/en/products/detail/yageo/RC0805FR-071KL/727444) |
+| 75k 1 percent 0805 resistor | 1 | DigiKey | $0.10 | $0.10 | [Part](https://www.digikey.com/en/products/detail/yageo/RC0805FR-0775KL/731080) |
+| 100k 1 percent 0805 resistor | 1 | DigiKey | $0.11 | $0.11 | [Part](https://www.digikey.com/en/products/detail/yageo/RC0805FR-07100KL/727544) |
+| 4.7k 1 percent 0805 resistor | 2 | DigiKey | $0.10 | $0.20 | [Part](https://www.digikey.com/en/products/detail/yageo/RC0805FR-074K7L/727929) |
+| Green 0805 LED | 1 | DigiKey | $0.19 | $0.19 | [Part](https://www.digikey.com/en/products/detail/lite-on-inc/LTST-C170KGKT/386777) |
+| SPST SMD tactile switch | 2 | DigiKey | $0.21 | $0.42 | [Part](https://www.digikey.com/en/products/detail/e-switch/TL3305AF160QG/5816181) |
+| Keystone mini blade through-hole fuse holder | 1 | DigiKey | $1.31 | $1.31 | [Part](https://www.digikey.com/en/products/detail/keystone-electronics/3568/2137306) |
+| Littelfuse MINI 297 2A 32V blade fuse, selected for prototype | 1 | DigiKey | $0.39 | $0.39 | [Part](https://www.digikey.com/en/products/detail/littelfuse-inc/0297002-WXNV/124900) |
+| 0.91 inch white 128x32 SSD1306 I2C OLED breakout, DFRobot DFR0648 | 1 | DigiKey | $9.90 | $9.90 | [Part](https://www.digikey.com/en/products/detail/dfrobot/DFR0648/12324932) |
+| 4-position 2.54mm Samtec OLED female socket | 1 | DigiKey | $1.11 | $1.11 | [Part](https://www.digikey.com/en/products/detail/samtec-inc/SSW-104-01-G-S/1112103) |
+| 6 inch male-to-female jumper cable kit, 20 wires, for OLED J10 pin-order correction | 1 | DigiKey | $2.75 | $2.75 | [Part](https://www.digikey.com/en/products/detail/sparkfun-electronics/12794/5993859) |
+| Main PCB fabrication, 5 bare boards | 1 | JLCPCB | $4.00 | $4.00 | [Ordering reference](https://jlcpcb.com/help/article/how-do-i-place-an-order) |
+| Servo extender PCB fabrication, 5 bare boards | 1 | JLCPCB | $4.00 | $4.00 | [Ordering reference](https://jlcpcb.com/help/article/how-do-i-place-an-order) |
+| **Parts and boards subtotal** | | | | **$49.05** | |
+| Estimated total shipping | 1 | | | $30.00 | |
+| **Total including estimated shipping** | | | | **$79.05** | |
 
-| Tier 2 budget | USD |
-| --- | ---: |
-| Full estimated components including exact N8R8 ESP32, OLED and **two** PCB fabrication estimates | $45.05 |
-| Tier 2 funding ceiling | $65.00 |
-| Nominal remaining **before** shipping, tariffs, tax and unpriced wiring | $19.95 |
-
-The previously reported **$36.78** shopping-cart figure has not been reconciled against a full cart screenshot. The $45.05 estimate reflects revised $0.18 single-piece 1uF capacitors and $0.21 tactile switches. This is NOT a cart quote. The full **$45.05** parts-plus-provisional-PCB estimate now includes the required $6.28 Mouser N8R8 ESP32, $9.90 DFRobot DFR0648 OLED, $2.75 jumper-wire adapter, $1.11 Samtec socket and two provisional $2 PCB-fabrication estimates. Shipping, tariffs, tax and unknown wiring costs are additional.
-
-### Purchasing: 25 DigiKey parts plus one Mouser ESP32
-
-- **New empty DigiKey cart:** [25-item CSV excluding ESP32](purchasing/Seizo_DigiKey_FULL_CART_25_lines_DigiKey_OLED.csv). Order one [ESP32 at Mouser](https://www.mouser.com/en/ProductDetail/Espressif-Systems/ESP32-S3-WROOM-1-N8R8?qs=7D1LtPJG0i3%2F28hKFavOpQ%3D%3D) separately.
-- **Original six-item cart still unchanged:** [add 19 missing DigiKey items](purchasing/Seizo_DigiKey_ADD_ONLY_19_missing_DigiKey_OLED.csv). Order the ESP32 from Mouser separately.
-- The [26-item](purchasing/Seizo_DigiKey_Cart_Upload_26.csv) and [20-item add-only](purchasing/Seizo_DigiKey_ADD_ONLY_20_missing.csv) DigiKey files include ESP32 and are archived alternatives. **Do not import those if also ordering from Mouser.**
-- [Detailed purchasing instructions](purchasing/README.md).
-
-DigiKey's six accepted lines totaled **$8.80** for components, with **$8.49** estimated shipping and **$2.74** estimated tariffs, or **$20.03**, **before** adding the missing components. The 17 failed import entries largely used full-reel rather than cut-tape SKUs and ambiguous vendor part numbers, not real board defects.
+The older [bom.csv](bom.csv), [bom_actual_boards.csv](bom_actual_boards.csv), and purchasing import files remain available as historical supporting records. Their earlier prices and totals must not be substituted for this table without reconciliation. This formatting update does not verify inventory, live prices, funding eligibility, or readiness to purchase.
 
 The fuse and holder are the same MINI 297 physical family, but the **2A rating is not a verified servo-protection design**. Confirm servo stall currents, external supply current limit, operating voltage and interconnect-wire ampacity **before powering motors**. The 3.3V regulator thermal budget, USB connector land pattern, stacking mechanical fit, and exact board fabrication quote remain open.
 
 **DO NOT plug the DFRobot DFR0648 OLED directly into Seizo J10.** Its pin order differs from J10. Use four individually mapped jumper wires: GND to GND, 3V3 to VCC, SCL to SCL and SDA to SDA. These wires are only for OLED logic, not servo power.
 
-For the selected purchasing plan, obtain the other 25 components from DigiKey and the exact [Mouser ESP32](https://www.mouser.com/en/ProductDetail/Espressif-Systems/ESP32-S3-WROOM-1-N8R8?qs=7D1LtPJG0i3%2F28hKFavOpQ%3D%3D) separately. Keep genuine screenshots of both actual carts with price, shipping and taxes. The four-conductor servo cable and two PCB fabrication orders are separate. Do not count the ESP32 twice.
-
-`BOM.md` and `JOURNAL.md` are auto-generated by Half Life and deliberately not edited. Use Half Life's **Import from repo** function after syncing this new `bom.csv` if it supports this format; verify each displayed quantity and total.
-
-
+The four-conductor servo cable and its actual cost still need to be confirmed. It has not been assigned a fabricated price in the table.
 
 ## Firmware
 
@@ -89,8 +102,6 @@ The KiCad design uses ESP32-S3-WROOM-1-N8R8 with 8 MB flash and 8 MB PSRAM. This
 Both real KiCad source projects, including the 37 custom main-board footprints and project-local `fp-lib-table`, are already present in this GitHub repository. The project's own PCB DRC was reported as **zero errors and zero warnings** on October 11, 2026. The submitted ERC warning descriptions relate mainly to labeled unused Raspberry Pi GPIOs and two intentionally excluded EEPROM symbols. The repository does not claim an independent native DRC run after the latest modification or physical prototype testing.
 
 Half Life's mandatory **PCB design files** checker can now be rerun. Separate Gerber/drill ZIPs have been generated and committed for both boards using KiCad 10; they remain unapproved for actual hardware manufacture. Review the 3.3V regulator temperature/load, servo fuse and wiring, custom USB footprint and D+/D- layout, and all connector/capacitor clearances before placing a manufacturing order or powering motors. Upload a genuine cart screenshot once the cart includes all needed parts; keep its actual order cost separate from the provisional BOM subtotal.
-
-
 
 ## Development record and assistance
 
