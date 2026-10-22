@@ -1,0 +1,41 @@
+name: Speaker mechanical reference
+on:
+  push:
+    branches: [speaker-design-validation-tools]
+    paths: [.github/workflows/speaker-mechanical-review.yml]
+permissions:
+  contents: read
+jobs:
+  references:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Fetch public manufacturer references
+        run: |
+          python3 - <<'PY'
+          import urllib.request,urllib.parse,pathlib,json,re,concurrent.futures
+          root=pathlib.Path('references');root.mkdir()
+          urls=[('bourns.html','https://www.bourns.com/resources/design-tools/engineering-files-list?folder=PTV09'),('jack.html','https://www.sameskydevices.com/product/resource/3dmodel/sj1-3533ng'),('jack.pdf','https://www.sameskydevices.com/product/resource/sj1-353xng.pdf'),('ptv09.pdf','https://www.bourns.com/docs/product-datasheets/ptv09.pdf')]
+          results=[]
+          def get(name,url):
+              try:
+                  req=urllib.request.Request(url,headers={'User-Agent':'Mozilla/5.0'})
+                  data=urllib.request.urlopen(req,timeout=30).read(); (root/name).write_bytes(data)
+                  return dict(name=name,url=url,bytes=len(data))
+              except Exception as e:return dict(name=name,url=url,error=str(e))
+          for name,url in urls:
+              r=get(name,url);results.append(r)
+              if name.endswith('.html') and 'error' not in r:
+                  text=(root/name).read_text(errors='replace')
+                  links=re.findall(r'(?:href|src)=["\']([^"\']+)["\']',text)
+                  selected=[urllib.parse.urljoin(url,u) for u in links if re.search(r'ptv09a-2|3533|\.stp|\.step|\.zip',u,re.I)]
+                  (root/(name+'.links.json')).write_text(json.dumps(selected,indent=2))
+                  for i,u in enumerate(selected):
+                      if re.search(r'\.stp|\.step|\.zip',u,re.I):results.append(get(name+str(i)+'.asset',u))
+          (root/'provenance.json').write_text(json.dumps(results,indent=2));print(json.dumps(results,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: speaker-mechanical-reference
+          path: references
+          retention-days: 1
