@@ -1,0 +1,10 @@
+Item,Quantity,Status,Price_USD,Owner_Action,Why_Required
+Main PCB fabrication lot,1,ESTIMATE ONLY,,Confirm JLCPCB cart and actual number of boards,$4 allowance is not a verified live lot quote
+Servo extender PCB fabrication lot,1,ESTIMATE ONLY,,Confirm second JLCPCB cart and actual number of boards,Separate design and fabrication job
+Main to extender four-conductor cable,1,UNQUOTED,,Choose gauge length and strain relief,Supplies servos and two logic lines
+M3 screws and insulated standoffs,1,UNQUOTED,,Measure real mounting height,Prevents shorts and mechanical interference
+Main and extender enclosures or mounting supports,1,UNQUOTED,,Fit-check Pi and moving arm,Mechanical and electrical isolation
+Solder wire heat shrink and connectors,1,UNQUOTED,,Inventory actual owned supplies,Safe assembly and wire termination
+Servo power supply and emergency stop,1,OWNER STOCK UNVERIFIED,,Validate power current and reachable stop,Required before motion but do not buy duplicates
+DigiKey Mouser and PCB shipping,1,ESTIMATED ONLY,,Replace old $30 with live checkout,Existing BOM shipping is not a live quote
+Tax and tariffs,1,UNQUOTED,,Obtain at checkout,Not included in estimated $79.05
