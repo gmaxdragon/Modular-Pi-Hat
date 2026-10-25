@@ -1,5 +1,8 @@
 # Modular PI HAT
 
+> **24 October 2026 technical audit:** Both the [main KiCad project](hardware/main/test1.kicad_pro) and [servo-extender KiCad project](hardware/servo-extender/SZSERVOEXTENDER.kicad_pro), plus their separate Gerber/drill packages, are present in this repository. These are **unassembled design files**. The archived $79.05 figure includes **$30 estimated shipping**, excludes tax and unlisted material, and is not a live manufacturing quote. The selected 2A servo fuse, 3.3V regulator thermal/load margin, USB connector land pattern, stacking/header clearances and 4-wire extender cable still require physical review before energizing the robot. The OLED pin sequence differs from J10 and must be individually remapped, never plugged directly. [Detailed engineering release gates](docs/ENGINEERING_RELEASE_GATES_2026-10-24.md). This note is technical and leaves the owner's original project narrative intact.
+
+
 ## What I made
 
 I made a massive PCB which is a PI Hat for my robotic arm. I really wanted to streamline everything and shrink it down and make it more reliable so I made this. It's really cool.
