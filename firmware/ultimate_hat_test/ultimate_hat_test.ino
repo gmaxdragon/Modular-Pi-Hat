@@ -24,7 +24,7 @@
 #endif
 
 static constexpr int LED_PIN = 38;
-static constexpr int BOOT_PIN = 0;
+static constexpr int HAT_BOOT_BUTTON_GPIO = 0;
 static constexpr int USB_SENSE_PIN = 39;
 static constexpr int OLED_SDA = 40;
 static constexpr int OLED_SCL = 41;
@@ -100,7 +100,7 @@ static void handleCommand(char *line) {
 
   } else if (!strcmp(start, "BUTTON")) {
     Serial.println(
-      digitalRead(BOOT_PIN) == LOW
+      digitalRead(HAT_BOOT_BUTTON_GPIO) == LOW
         ? "BOOT=PRESSED"
         : "BOOT=RELEASED"
     );
@@ -197,7 +197,7 @@ void setup() {
   ledIsOn = false;
 
   // These inputs already have external circuitry on the PCB.
-  pinMode(BOOT_PIN, INPUT_PULLUP);
+  pinMode(HAT_BOOT_BUTTON_GPIO, INPUT_PULLUP);
   pinMode(USB_SENSE_PIN, INPUT);
 
   Serial.begin(115200);
