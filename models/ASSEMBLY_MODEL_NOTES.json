@@ -1,0 +1,93 @@
+{
+  "result": "PASS for model coverage and dimensional checks; physical fit unverified",
+  "source_github_blob": "7f1dc1b636c7c533a6bd2251fd1c813a3a8e4482",
+  "source_board_component_count": 37,
+  "native_component_models_used": 35,
+  "native_references_excluded_and_replaced": [
+    "J1",
+    "C3"
+  ],
+  "component_references_represented": [
+    "C2",
+    "C3",
+    "C4",
+    "C5",
+    "C7",
+    "C8",
+    "D1",
+    "F1",
+    "J1",
+    "J10",
+    "J11",
+    "J12",
+    "J2",
+    "J3",
+    "J4",
+    "J5",
+    "J6",
+    "J7",
+    "J8",
+    "J9",
+    "R10",
+    "R11",
+    "R12",
+    "R13",
+    "R14",
+    "R15",
+    "R3",
+    "R4",
+    "R5",
+    "R6",
+    "R7",
+    "R8",
+    "R9",
+    "RESET1",
+    "SW1",
+    "U2",
+    "U3"
+  ],
+  "extra_body": "Conservative installed MINI fuse housing above F1 holder",
+  "triangles": 37948,
+  "degenerate_triangles_removed": {
+    "35 native component models": 8
+  },
+  "units": "mm",
+  "minimum_xyz_mm": [
+    -2.220446049250313e-16,
+    -5.85,
+    -23.0
+  ],
+  "maximum_xyz_mm": [
+    65.0,
+    56.0,
+    17.765
+  ],
+  "occupied_bounds_mm": [
+    65.0,
+    61.85,
+    40.765
+  ],
+  "pcb_surface_z_mm": [
+    0,
+    1.6
+  ],
+  "stl_sha256": "b88fa825cf04b5e60198c2bd91956238d11445335b54fa21fffdc6cb10923a75",
+  "approximations": {
+    "J1": "Solid51x5x23mm underside envelope, 40x0.64mm square pin envelopes extending10mm from underside. Selected Adafruit1979. Socket holes and internal contacts omitted.",
+    "C3": "Conservative diameter8.5mm,length13mm,0.5mm seating gap; selected Panasonic nominal diameter8mm,length11.5mm.",
+    "F1": "Added3.8x10.9x8.8mm fuse housing above holder top; deliberately conservative insertion height."
+  },
+  "not_included": [
+    "Raspberry Pi4 board or its ports",
+    "Remote OLED board and display",
+    "Fan body",
+    "Cables and mated plugs",
+    "Screws,nuts,standoffs"
+  ],
+  "sources": [
+    "https://www.adafruit.com/product/1979",
+    "https://mediap.industry.panasonic.eu/assets/imported/industrial.panasonic.com/cdbs/www-data/pdf/RDF0000/RDF0000C1266.pdf",
+    "https://www.littelfuse.com/assetdocs/littelfuse-datasheet-297-mini32v?assetguid=42c9dd21-a88e-4328-8e67-2f832444faf1"
+  ],
+  "notes": "Compound assembly reference, not a boolean-unioned printable solid. Do not scale the mesh to create enclosure wall thickness. Actual component tolerances,wire bends,header seating and access must be checked before final enclosure printing."
+}
